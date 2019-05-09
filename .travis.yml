@@ -57,10 +57,12 @@ matrix:
         - choco install python --version 3.4.4 # this install takes at least 1 min 30 sec 3.7.2, 3.6.7, 3.5.1, 3.4.4
       env: 
         - PATH=/c/Python34:/c/Python34/Scripts:$PATH
+sudo: required
 services: 
   - docker
 install: 
-  - pip install --user --upgrade pip || pip install --upgrade pip # all three OSes agree about 'pip3'
+  # - pip install --user --upgrade pip || pip install --upgrade pip # all three OSes agree about 'pip3'
+  - python -m pip --user install --upgrade pip || python -m pip install --upgrade pip # all three OSes agree about 'pip3'
 # 'python' points to Python 2.7 on macOS but points to Python 3.7 on Linux and Windows
 # 'python3' is a 'command not found' error on Windows but 'py' works on Windows only
 # before_script:
