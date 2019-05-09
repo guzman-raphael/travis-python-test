@@ -32,7 +32,7 @@ matrix:
       python: 3.7           # this works for Linux but is ignored on macOS or Windows
       dist: xenial          # required for Python >= 3.7
       # sudo: required
-      sudo: true
+      # sudo: true
       after_success: sudo whoami
     - name: "Python 3.7.2 on macOS"
       os: osx
