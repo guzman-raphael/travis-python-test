@@ -33,7 +33,7 @@ matrix:
       after_success: sudo whoami && python --version
     - name: "Python 3.7.2 on macOS"
       os: osx
-      osx_image: xcode9  # Python 3.7.2 running on macOS 10.14.3 xcode10.2, xcode9
+      osx_image: xcode9.4  # Python 3.7.2 running on macOS 10.14.3 xcode10.2, xcode9.4
       language: shell       # 'language: python' is an error on Travis CI macOS
       # python: 3.7         # 'python:' is ignored on Travis CI macOS
       after_success: sudo whoami && python3 --version
