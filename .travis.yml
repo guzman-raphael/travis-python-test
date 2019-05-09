@@ -45,8 +45,7 @@ matrix:
       before_install: 
         - brew install zlib
         - brew upgrade pyenv
-        - brew install caskroom/cask/brew-cask
-        - brew cask install docker-toolbox
+        - brew install docker
         - pyenv install 3.4.4 
         - pyenv global 3.4.4
       env: PATH=~/.pyenv/versions/3.4.4/bin:$PATH LDFLAGS=-L/usr/local/opt/zlib/lib CPPFLAGS=-I/usr/local/opt/zlib/include PKG_CONFIG_PATH=/usr/local/opt/zlib/lib/pkgconfig KEEP_BUILD_PATH=true
@@ -60,8 +59,8 @@ matrix:
         - PATH=/c/Python34:/c/Python34/Scripts:$PATH
 services: 
   - docker
-# install: 
-#   - pip3 install --user --upgrade pip || pip3 install --upgrade pip  || pip install --upgrade pip # all three OSes agree about 'pip3'
+install: 
+  - pip install --user --upgrade pip || pip install --upgrade pip # all three OSes agree about 'pip3'
 # 'python' points to Python 2.7 on macOS but points to Python 3.7 on Linux and Windows
 # 'python3' is a 'command not found' error on Windows but 'py' works on Windows only
 # before_script:
@@ -71,10 +70,9 @@ services:
 #   - docker run -d alpine sleep 10 
 #   - docker ps
 script: 
-  - python3 run.py || python run.py
+  - python run.py
 after_success:
   - whoami
   # - python3 --version || python --version
   - python --version
   - pip --version
-  - mysql --version
