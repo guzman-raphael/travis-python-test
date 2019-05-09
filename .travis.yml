@@ -33,6 +33,7 @@ matrix:
       dist: xenial          # required for Python >= 3.7
       # sudo: required
       # sudo: true
+      after_success: whoami
     - name: "Python 3.7.2 on macOS"
       os: osx
       osx_image: xcode10.2  # Python 3.7.2 running on macOS 10.14.3
@@ -50,5 +51,3 @@ install:
 # 'python3' is a 'command not found' error on Windows but 'py' works on Windows only
 script: 
   - python3 run.py || python run.py
-after_success:
-  - echo 'done'
