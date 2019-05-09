@@ -36,7 +36,7 @@ matrix:
       osx_image: xcode10.2  # Python 3.7.2 running on macOS 10.14.3 xcode10.2, xcode9.4, 
       language: shell       # 'language: python' is an error on Travis CI macOS
       # python: 3.7         # 'python:' is ignored on Travis CI macOS
-      before_install: brew install pyenv && pyenv install 3.4.4 && pyenv local 3.4.4
+      before_install: brew install zlib pyenv && pyenv install 3.4.4 && pyenv local 3.4.4
       after_success: sudo whoami && python3 --version
       env: PATH=~/.pyenv/versions/2.7.10/bin:$PATH
     - name: "Python 3.7.3 on Windows"
@@ -45,6 +45,8 @@ matrix:
       # python: 3.7         # 'python:' is ignored on Travis CI Windows
       before_install: whoami && choco install python --version 3.4.4 && python --version  # this install takes at least 1 min 30 sec 3.7.2, 3.6.7, 3.5.1, 3.4.4
       env: PATH=/c/Python34:/c/Python34/Scripts:$PATH
+services: 
+  - docker
 install: 
   - pip3 install --user --upgrade pip || pip3 install --upgrade pip  # all three OSes agree about 'pip3'
 # 'python' points to Python 2.7 on macOS but points to Python 3.7 on Linux and Windows
