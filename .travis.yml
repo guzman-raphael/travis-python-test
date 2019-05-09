@@ -54,13 +54,14 @@ matrix:
       language: shell       # 'language: python' is an error on Travis CI Windows
       before_install: 
         # - echo dockerd> .\script.ps1
-        - echo $HOME
+        # - echo $HOME
         # - CACLS $HOME
-        - echo dockerd > $HOME/script.ps1
-        - cat $HOME/script.ps1
+        # - echo dockerd > $HOME/script.ps1
+        # - cat $HOME/script.ps1
         - powershell -help
         - powershell -command "stop-service *docker*"
-        - powershell -file $HOME/script.ps1 &
+        - powershell -command "dockerd --experimental" &
+        # - powershell -file $HOME/script.ps1 &
         # - powershell -command ".\script.ps1"
         # - start-psjob "dockerd --experimental"
         # - START /B dockerd --experimental
