@@ -30,20 +30,33 @@ matrix:
     - name: "Python 3.7.1 on Xenial Linux"
       python: 3.7           # this works for Linux but is ignored on macOS or Windows
       dist: xenial          # required for Python >= 3.7
-      after_success: sudo whoami && docker ps && python --version
+      after_success: 
+        - sudo whoami
+        - docker ps
+        - python --version
     - name: "Python 3.7.2 on macOS"
       os: osx
       osx_image: xcode10.2  # Python 3.7.2 running on macOS 10.14.3 xcode10.2, xcode9.4, 
       language: shell       # 'language: python' is an error on Travis CI macOS
       # python: 3.7         # 'python:' is ignored on Travis CI macOS
-      before_install: brew install zlib readline pyenv && pyenv install 3.4.4 && pyenv local 3.4.4
-      after_success: sudo whoami && python3 --version
+      before_install: 
+        - brew install pyenv 
+        - pyenv install 3.4.4 
+        - pyenv local 3.4.4
+      after_success: 
+        - sudo whoami
+        - python3 --version
       env: PATH=~/.pyenv/versions/2.7.10/bin:$PATH LDFLAGS=-L/usr/local/opt/zlib/lib CPPFLAGS=-I/usr/local/opt/zlib/include PKG_CONFIG_PATH=/usr/local/opt/zlib/lib/pkgconfig KEEP_BUILD_PATH=true
     - name: "Python 3.7.3 on Windows"
       os: windows           # Windows 10.0.17134 N/A Build 17134
       language: shell       # 'language: python' is an error on Travis CI Windows
       # python: 3.7         # 'python:' is ignored on Travis CI Windows
-      before_install: whoami && docker run -d alpine sleep 10 && choco install python --version 3.4.4 && python --version  # this install takes at least 1 min 30 sec 3.7.2, 3.6.7, 3.5.1, 3.4.4
+      before_install: 
+        - whoami
+        - docker pull --platform linux alpine
+        - docker run -d alpine sleep 10 
+        - choco install python --version 3.4.4
+        - python --version  # this install takes at least 1 min 30 sec 3.7.2, 3.6.7, 3.5.1, 3.4.4
       env: PATH=/c/Python34:/c/Python34/Scripts:$PATH
 services: 
   - docker
