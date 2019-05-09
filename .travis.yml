@@ -55,8 +55,8 @@ matrix:
       before_install: 
         # - echo dockerd> .\script.ps1
         - echo $HOME
-        - echo "dockerd" >> .\script.ps1
-        - type .\script.ps1
+        - echo "dockerd" >> ./script.ps1
+        - type ./script.ps1
         - powershell -command "stop-service *docker*"
         - powershell -command ".\script.ps1"
         # - start-psjob "dockerd --experimental"
