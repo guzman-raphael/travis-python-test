@@ -59,7 +59,7 @@ install:
 # 'python3' is a 'command not found' error on Windows but 'py' works on Windows only
 before_script:
   - sudo systemctl stop docker
-  - sudo dockerd --experimental
+  - sudo dockerd --experimental &
   - docker pull --platform linux alpine
   - docker run -d alpine sleep 10 
   - docker ps
