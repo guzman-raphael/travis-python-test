@@ -37,6 +37,11 @@ matrix:
       os: osx
       osx_image: xcode9.3  # Python 3.7.2 running on macOS 10.14.3 xcode10.2, xcode9.4, 
       language: shell       # 'language: python' is an error on Travis CI macOS
+      cache:
+        directories:
+          - $HOME/Library/Caches/Homebrew
+      before_cache:
+        - brew cleanup
       before_install: 
         - brew install zlib
         - brew upgrade pyenv
