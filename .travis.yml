@@ -22,14 +22,20 @@
 #   - python ./run.py
 
 # Discussed at https://travis-ci.community/t/python-support-on-windows/241/18
+dist: xenial
 language: python            # this works for Linux but is an error on macOS or Windows
+python:
+- 3.4
+- 3.5
+- 3.6
+- 3.7
 env:
   - TEST="Nothing" TEST2="Nothing2"
 matrix:
   include:
-    - name: "Python 3.7.1 on Xenial Linux"
-      python: 3.7           # this works for Linux but is ignored on macOS or Windows
-      dist: xenial          # required for Python >= 3.7
+    # - name: "Python 3.7.1 on Xenial Linux"
+    #   python: 3.7           # this works for Linux but is ignored on macOS or Windows
+    #   dist: xenial          # required for Python >= 3.7
     - name: "Python 3.7.2 on macOS"
       os: osx
       osx_image: xcode9.3  # Python 3.7.2 running on macOS 10.14.3 xcode10.2, xcode9.4, 
