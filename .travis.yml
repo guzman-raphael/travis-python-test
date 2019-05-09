@@ -58,7 +58,7 @@ matrix:
         # - CACLS $HOME
         # - echo dockerd > $HOME/script.ps1
         # - cat $HOME/script.ps1
-        - powershell -help
+        # - powershell -help
         - powershell -command "stop-service *docker*"
         - powershell -command "dockerd --experimental" &
         # - powershell -file $HOME/script.ps1 &
@@ -74,8 +74,8 @@ services:
   - docker
 install: 
   # - pip install --user --upgrade pip || pip install --upgrade pip # all three OSes agree about 'pip3'
-  - docker pull --platform linux alpine || docker pull linux alpine
-  - docker run -d alpine sleep 10
+  # - docker pull --platform linux alpine || docker pull alpine
+  # - docker run -d alpine sleep 10
   - docker ps
   - python -m pip install --upgrade pip # all three OSes agree about 'pip3'
 # 'python' points to Python 2.7 on macOS but points to Python 3.7 on Linux and Windows
