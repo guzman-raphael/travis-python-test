@@ -45,6 +45,8 @@ matrix:
       before_install: 
         - brew install zlib
         - brew upgrade pyenv
+        - brew install caskroom/cask/brew-cask
+        - brew cask install docker-toolbox
         - pyenv install 3.4.4 
         - pyenv global 3.4.4
       env: PATH=~/.pyenv/versions/3.4.4/bin:$PATH LDFLAGS=-L/usr/local/opt/zlib/lib CPPFLAGS=-I/usr/local/opt/zlib/include PKG_CONFIG_PATH=/usr/local/opt/zlib/lib/pkgconfig KEEP_BUILD_PATH=true
