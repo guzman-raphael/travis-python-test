@@ -40,7 +40,7 @@ matrix:
       language: shell       # 'language: python' is an error on Travis CI macOS
       # python: 3.7         # 'python:' is ignored on Travis CI macOS
       before_install: 
-        - brew install readline zlib pyenv 
+        - brew install zlib pyenv 
         - pyenv install 3.4.4 
         - pyenv local 3.4.4
       after_success: 
@@ -53,10 +53,9 @@ matrix:
       # python: 3.7         # 'python:' is ignored on Travis CI Windows
       before_install: 
         - whoami
-        # - powershell dockerd --experimental
-        - powershell -command "dockerd --experimental"
-        - docker pull --platform linux alpine
-        - docker run -d alpine sleep 10 
+        # - powershell -command "dockerd --experimental"
+        # - docker pull --platform linux alpine
+        # - docker run -d alpine sleep 10 
         - choco install python --version 3.4.4
         - python --version  # this install takes at least 1 min 30 sec 3.7.2, 3.6.7, 3.5.1, 3.4.4
       env: 
