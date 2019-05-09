@@ -23,7 +23,7 @@
 
 # Discussed at https://travis-ci.community/t/python-support-on-windows/241/18
 # sudo: required
-# language: python            # this works for Linux but is an error on macOS or Windows
+language: python            # this works for Linux but is an error on macOS or Windows
 env:
   - TEST="Nothing" TEST2="Nothing2"
 matrix:
@@ -31,7 +31,7 @@ matrix:
     - name: "Python 3.7.1 on Xenial Linux"
       python: 3.7           # this works for Linux but is ignored on macOS or Windows
       dist: xenial          # required for Python >= 3.7
-      sudo: required
+      # sudo: required
       # sudo: true
     - name: "Python 3.7.2 on macOS"
       os: osx
