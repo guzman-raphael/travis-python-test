@@ -53,6 +53,7 @@ matrix:
         - PATH=/c/Python34:/c/Python34/Scripts:$PATH
 services: 
   - docker
+  - mysql
 # install: 
 #   - pip3 install --user --upgrade pip || pip3 install --upgrade pip  || pip install --upgrade pip # all three OSes agree about 'pip3'
 # 'python' points to Python 2.7 on macOS but points to Python 3.7 on Linux and Windows
@@ -70,3 +71,4 @@ after_success:
   # - python3 --version || python --version
   - python --version
   - pip --version
+  - mysql --version
