@@ -12,7 +12,7 @@ jobs:
         - ifconfig
         - env
         - docker pull mysql:5.7
-        - docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=simple mysql:5.7
+        - docker run -d -p 9800:3306 -e MYSQL_ROOT_PASSWORD=simple mysql:5.7
     - script: 
       - ifconfig
       - env
