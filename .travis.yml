@@ -27,7 +27,7 @@ jobs:
       - echo "$CI_ID" > ~/.ssh/id_rsa_dj
       - chmod g-rw,o-r ~/.ssh/id_rsa_dj
       - ls -al ~/.ssh/id_rsa_dj
-      - ssh-add ~/.ssh/id_rsa_dj
+      - ssh-add ~/.ssh/id_rsa_dj -N ""
       - printf "Host datajoint\n    Hostname github.com\n    User git\n    IdentityFile ~/.ssh/id_rsa_dj\n" >> ~/.ssh/config
       # - ssh-keyscan github.com >> ~/.ssh/known_hosts
       - git clone git@github.com:guzman-raphael/travis-ref.git
