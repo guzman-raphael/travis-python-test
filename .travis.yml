@@ -25,4 +25,4 @@ jobs:
         - ifconfig
         - env
         - docker pull minio/mc:RELEASE.2019-05-01T23-27-44Z
-        - docker run --network="host" --entrypoint=/bin/sh minio/mc:RELEASE.2019-05-01T23-27-44Z -c "mc config host add dj-s3 http://127.0.0.1:9000 datajoint datajoint;mc mb datajoint-test;mc policy download datajoint-test;exit 0;"
+        - docker run --network="host" --entrypoint=/bin/sh minio/mc:RELEASE.2019-05-01T23-27-44Z -c "mc config host add dj-s3 http://main:9000 datajoint datajoint;mc mb datajoint-test;mc policy download datajoint-test;exit 0;"
