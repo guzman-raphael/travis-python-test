@@ -12,7 +12,7 @@ jobs:
         - ifconfig
         - env
         - docker pull mysql:5.7
-        - docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=simple mysql:tag
+        - docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=simple mysql:5.7
     - script: 
       - ifconfig
       - env
@@ -22,6 +22,7 @@ jobs:
     - stage: "Tests"
       name: "Python 3.7"
       script:
-        - sleep 13
         - ifconfig
         - env
+        - docker pull minio/mc:RELEASE.2019-05-01T23-27-44Z
+        - docker run --network="host" --entrypoint=/bin/sh minio/mc:RELEASE.2019-05-01T23-27-44Z -c "mc config host add dj-s3 http://127.0.0.1:9000 datajoint datajoint;mc mb datajoint-test;mc policy download datajoint-test;exit 0;"
