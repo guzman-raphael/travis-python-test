@@ -1,15 +1,23 @@
+addons:
+  hosts:
+    - main
+sudo: required
+services:
+  - docker
 jobs:
   include:
     - stage: "Prepare Dependencies"               
       name: "MySQL"           
       script: 
-        - sleep 10
         - ifconfig
         - env
+        - docker pull mysql:5.7
+        - docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=simple mysql:tag
     - script: 
-      - sleep 15
       - ifconfig
       - env
+      - docker pull minio/minio
+      - docker run -d -p 9000:9000 -e "MINIO_ACCESS_KEY=datajoint" -e "MINIO_SECRET_KEY=datajoint" minio/minio:RELEASE.2019-05-02T19-07-09Z server /data
       name: "Minio"     
     - stage: "Tests"
       name: "Python 3.7"
