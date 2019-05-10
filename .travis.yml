@@ -5,12 +5,15 @@ jobs:
       script: 
         - sleep 10
         - ifconfig
+        - env
     - script: 
       - sleep 15
       - ifconfig
+      - env
       name: "Minio"     
     - stage: "Tests"
       name: "Python 3.7"
       script:
         - sleep 13
         - ifconfig
+        - env
