@@ -19,11 +19,11 @@ jobs:
     - script: 
       - ifconfig
       - env
-      - cat ~/ssh/config
       - docker pull minio/minio
       - docker run -d -p 9000:9000 -e "MINIO_ACCESS_KEY=datajoint" -e "MINIO_SECRET_KEY=datajoint" minio/minio:RELEASE.2019-05-02T19-07-09Z server /data
       # - mkdir ~/.ssh
-      # - eval "$(ssh-agent -s)"
+      - eval "$(ssh-agent -s)"
+      - cat ~/.ssh/config
       - echo "$CI_ID" > ~/.ssh/id_rsa_dj
       - chmod g-r,o-r ~/.ssh/id_rsa_dj
       - ssh-add ~/.ssh/id_rsa_dj
