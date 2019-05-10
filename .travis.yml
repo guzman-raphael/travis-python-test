@@ -25,7 +25,7 @@ jobs:
       - eval "$(ssh-agent -s)"
       - cat ~/.ssh/config
       - echo "$CI_ID" > ~/.ssh/id_rsa_dj
-      - chmod g-r,o-r ~/.ssh/id_rsa_dj
+      - chmod g-rw,o-r ~/.ssh/id_rsa_dj
       - ls -al ~/.ssh/id_rsa_dj
       - ssh-add ~/.ssh/id_rsa_dj
       - printf "Host datajoint\n    Hostname github.com\n    User git\n    IdentityFile ~/.ssh/id_rsa_dj\n" >> ~/.ssh/config
