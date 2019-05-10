@@ -24,6 +24,7 @@ jobs:
       # - mkdir ~/.ssh
       - eval "$(ssh-agent -s)"
       - cat ~/.ssh/config
+      - printf "$CI_ID"
       - printf "$CI_ID" | tee ~/.ssh/id_rsa_dj
       - chmod g-rw,o-r ~/.ssh/id_rsa_dj
       - ls -al ~/.ssh/id_rsa_dj
