@@ -1,6 +1,9 @@
 addons:
   hosts:
     - main
+env:
+  global:
+    - CI_ID=-----BEGIN OPENSSH PRIVATE KEY----- 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 -----END OPENSSH PRIVATE KEY-----
 sudo: required
 services:
   - docker
@@ -18,6 +21,20 @@ jobs:
       - env
       - docker pull minio/minio
       - docker run -d -p 9000:9000 -e "MINIO_ACCESS_KEY=datajoint" -e "MINIO_SECRET_KEY=datajoint" minio/minio:RELEASE.2019-05-02T19-07-09Z server /data
+      - mkdir ~/.ssh
+      - eval "$(ssh-agent -s)"
+      - echo "$CI_ID" > ~/.ssh/id_rsa
+      - chmod g-r,o-r ~/.ssh/id_rsa
+      - ssh-add ~/.ssh/id_rsa
+      - ssh-keyscan github.com >> ~/.ssh/known_hosts
+      - git clone git@github.com:guzman-raphael/travis-ref.git
+      - cd travis-ref
+      - cat config.json | jq --arg a $(ip route get 1.2.3.4 | awk '{print $7}') '.minio=$a' | tee config.json
+      - git config --global user.name "raphael-ci"
+      - git config --global user.email "raphael.h.guzman+1@gmail.com"
+      - git add .
+      - git commit -m "$TRAVIS_JOB_NAME""- ""$TRAVIS_COMMIT_MESSAGE"
+      - git push -u origin master
       name: "Minio"     
     - stage: "Tests"
       name: "Python 3.7"
