@@ -1,83 +1,97 @@
-addons:
-  hosts:
-    - main
-env:
-  global:
-    - CI_ID="-----BEGIN OPENSSH PRIVATE KEY-----\n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\n-----END OPENSSH PRIVATE KEY-----\n"
-sudo: required
-services:
-  - docker
-jobs:
-  include:
-    - stage: "Prepare Dependencies"               
-      name: "MySQL"           
-      script: 
-        - ifconfig
-        - env
-        - docker pull mysql:5.7
-        - docker run -d -p 9800:3306 -e MYSQL_ROOT_PASSWORD=simple mysql:5.7
-        - eval "$(ssh-agent -s)"
-        - printf -- "$CI_ID" | tee ~/.ssh/id_rsa_dj
-        - chmod g-rw,o-r ~/.ssh/id_rsa_dj
-        - ssh-add ~/.ssh/id_rsa_dj
-        - printf "Host datajoint\n    Hostname github.com\n    User git\n    IdentityFile ~/.ssh/id_rsa_dj\n" >> ~/.ssh/config
-        - git clone git@github.com:guzman-raphael/travis-ref.git
-        - cd travis-ref
-        - jq --arg a $(ip route get 1.2.3.4 | awk '{print $7}') '.mysql = $a' config.json > tmp.json && mv tmp.json config.json
-        # - cat config.json | jq --arg a $(ip route get 1.2.3.4 | awk '{print $7}') '.mysql=$a' | tee config.json
-        - git config --global user.name "raphael-ci"
-        - git config --global user.email "raphael.h.guzman+1@gmail.com"
-        - git add .
-        - git commit -m "$TRAVIS_JOB_NAME""[""$TRAVIS_JOB_NUMBER""]- ""$TRAVIS_COMMIT_MESSAGE"
-        - git push -u origin master
-    - script: 
-      - ifconfig
-      - env
-      - docker pull minio/minio
-      - docker run -d -p 9000:9000 -e "MINIO_ACCESS_KEY=datajoint" -e "MINIO_SECRET_KEY=datajoint" minio/minio:RELEASE.2019-05-02T19-07-09Z server /data
-      # - mkdir ~/.ssh
-      # - cat ~/.ssh/config
-      # - printf -- "$CI_ID"
-      # - ls -al ~/.ssh/id_rsa_dj
-      # - cat ~/.ssh/id_rsa_dj
-      # - ssh-keyscan github.com >> ~/.ssh/known_hosts
-      - eval "$(ssh-agent -s)"
-      - printf -- "$CI_ID" | tee ~/.ssh/id_rsa_dj
-      - chmod g-rw,o-r ~/.ssh/id_rsa_dj
-      - ssh-add ~/.ssh/id_rsa_dj
-      - printf "Host datajoint\n    Hostname github.com\n    User git\n    IdentityFile ~/.ssh/id_rsa_dj\n" >> ~/.ssh/config
-      - git clone git@github.com:guzman-raphael/travis-ref.git
-      - cd travis-ref
-      - jq --arg a $(ip route get 1.2.3.4 | awk '{print $7}') '.minio = $a' config.json > tmp.json && mv tmp.json config.json
-      # - cat config.json | jq --arg a $(ip route get 1.2.3.4 | awk '{print $7}') '.minio=$a' | tee config.json
-      - git config --global user.name "raphael-ci"
-      - git config --global user.email "raphael.h.guzman+1@gmail.com"
-      - git add .
-      - git commit -m "$TRAVIS_JOB_NAME""[""$TRAVIS_JOB_NUMBER""]- ""$TRAVIS_COMMIT_MESSAGE"
-      - git push -u origin master
-      name: "Minio"     
-    - stage: "Tests"
-      name: "Python 3.7"
-      script:
-        - ifconfig
-        - env
-        - NEW_SERV=$(echo $SSH_CLIENT | awk '{print $1}')
-        - NEW_PORT=$(echo $SSH_CLIENT | awk '{print $3}')
-        - ssh-keyscan $NEW_SERV >> ~/.ssh/known_hosts
-        - ssh -p $NEW_PORT travis@$NEW_SERV ifconfig
-        - eval "$(ssh-agent -s)"
-        - printf -- "$CI_ID" | tee ~/.ssh/id_rsa_dj
-        - chmod g-rw,o-r ~/.ssh/id_rsa_dj
-        - ssh-add ~/.ssh/id_rsa_dj
-        - printf "Host datajoint\n    Hostname github.com\n    User git\n    IdentityFile ~/.ssh/id_rsa_dj\n" >> ~/.ssh/config
-        - git clone git@github.com:guzman-raphael/travis-ref.git
-        - cd travis-ref
-        - MINIO=$(jq -r '.minio' config.json)
-        - MYSQL=$(jq -r '.mysql' config.json)
-        - docker pull minio/mc:RELEASE.2019-05-01T23-27-44Z
-        - docker run --network="host" --entrypoint=/bin/sh minio/mc:RELEASE.2019-05-01T23-27-44Z -c "echo $MINIO;"
-        - docker run --network="host" --entrypoint=/bin/sh minio/mc:RELEASE.2019-05-01T23-27-44Z -c "mc config host add dj-s3 http://$MINIO:9000 datajoint datajoint;mc mb datajoint-test;mc policy download datajoint-test;exit 0;"
+# sudo: required
+# language: python
+# env:
+#   - TEST="Nothing" TEST2="Nothing2"
+# python:
+#   - "3.4"
+#   - "3.5"
+#   - "3.6"
+# matrix:
+#     include:
+#     - python: 3.7
+#       dist: xenial
+#       sudo: true
+# # services: 
+#   # - docker
+# before_install:
+#   - sudo apt-get -qq update
+# install:
+#   # - pip install nose
+# # command to run tests
+# script:
+#   - python ./run.py
 
-        # TRAVIS_APP_HOST
-        # SSH_CONNECTION
-        # SSH_CLIENT
+# Discussed at https://travis-ci.community/t/python-support-on-windows/241/18
+dist: xenial
+language: python            # this works for Linux but is an error on macOS or Windows
+# python:
+# - 3.4
+# - 3.5
+# - 3.6
+# - 3.7
+env:
+  - TEST="Nothing" TEST2="Nothing2"
+matrix:
+  include:
+    # - name: "Python 3.4 on macOS"
+    #   os: osx
+    #   osx_image: xcode9.3  # Python 3.7.2 running on macOS 10.14.3 xcode10.2, xcode9.4, 
+    #   language: shell       # 'language: python' is an error on Travis CI macOS
+    #   cache:
+    #     directories:
+    #       - $HOME/Library/Caches/Homebrew
+    #   before_cache:
+    #     - brew cleanup
+    #   before_install: 
+    #     - brew install zlib
+    #     - brew upgrade pyenv
+    #     - brew install docker
+    #     - pyenv install 3.4.4 
+    #     - pyenv global 3.4.4
+    #   env: PATH=~/.pyenv/versions/3.4.4/bin:$PATH LDFLAGS=-L/usr/local/opt/zlib/lib CPPFLAGS=-I/usr/local/opt/zlib/include PKG_CONFIG_PATH=/usr/local/opt/zlib/lib/pkgconfig KEEP_BUILD_PATH=true
+    - name: "Python 3.4 on Windows"
+      os: windows           # Windows 10.0.17134 N/A Build 17134
+      language: shell       # 'language: python' is an error on Travis CI Windows
+      before_install: 
+        # - echo dockerd> .\script.ps1
+        # - echo $HOME
+        # - CACLS $HOME
+        # - echo dockerd > $HOME/script.ps1
+        # - cat $HOME/script.ps1
+        # - powershell -help
+        - powershell -command "stop-service *docker*"
+        - powershell -command "dockerd --experimental" &
+        # - powershell -file $HOME/script.ps1 &
+        # - powershell -command ".\script.ps1"
+        # - start-psjob "dockerd --experimental"
+        # - START /B dockerd --experimental
+        # - dockerd --experimental
+        - choco install python --version 3.4.4 # this install takes at least 1 min 30 sec 3.7.2, 3.6.7, 3.5.1, 3.4.4
+      env: 
+        - PATH=/c/Python34:/c/Python34/Scripts:$PATH
+sudo: required
+services: 
+  - docker
+install: 
+  # - pip install --user --upgrade pip || pip install --upgrade pip # all three OSes agree about 'pip3'
+  - docker pull minio/minio:RELEASE.2019-05-02T19-07-09Z || docker pull vitaliylebedev/windows-minio:latest
+  - docker tag minio/minio:RELEASE.2019-05-02T19-07-09Z minio:v1.0 || docker tag vitaliylebedev/windows-minio:latest minio:v1.0
+  - docker run -d -p 9000:9000 -e "MINIO_ACCESS_KEY=datajoint" -e "MINIO_SECRET_KEY=datajoint" minio:v1.0 server /data || docker run -d -p 9000:9000 -e "MINIO_ACCESS_KEY=datajoint" -e "MINIO_SECRET_KEY=datajoint" minio:v1.0 C:\tools\minio.exe server C:\Data
+  - docker ps
+  - python -m pip install --upgrade pip # all three OSes agree about 'pip3'
+# 'python' points to Python 2.7 on macOS but points to Python 3.7 on Linux and Windows
+# 'python3' is a 'command not found' error on Windows but 'py' works on Windows only
+# before_script:
+#   - sudo systemctl stop docker
+#   - sudo dockerd --experimental &
+#   - docker pull --platform linux alpine
+#   - docker run -d alpine sleep 10 
+#   - docker ps
+script: 
+  - python run.py
+after_success:
+  - whoami
+  # - python3 --version || python --version
+  - python --version
+  - pip --version
+  - kill $(jobs -p)
