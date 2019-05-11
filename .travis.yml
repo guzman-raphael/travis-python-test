@@ -23,7 +23,8 @@ jobs:
         - printf "Host datajoint\n    Hostname github.com\n    User git\n    IdentityFile ~/.ssh/id_rsa_dj\n" >> ~/.ssh/config
         - git clone git@github.com:guzman-raphael/travis-ref.git
         - cd travis-ref
-        - cat config.json | jq --arg a $(ip route get 1.2.3.4 | awk '{print $7}') '.mysql=$a' | tee config.json
+        - jq --arg a $(ip route get 1.2.3.4 | awk '{print $7}') '.mysql = $a' config.json > tmp.json && mv tmp.json config.json
+        # - cat config.json | jq --arg a $(ip route get 1.2.3.4 | awk '{print $7}') '.mysql=$a' | tee config.json
         - git config --global user.name "raphael-ci"
         - git config --global user.email "raphael.h.guzman+1@gmail.com"
         - git add .
@@ -47,7 +48,8 @@ jobs:
       - printf "Host datajoint\n    Hostname github.com\n    User git\n    IdentityFile ~/.ssh/id_rsa_dj\n" >> ~/.ssh/config
       - git clone git@github.com:guzman-raphael/travis-ref.git
       - cd travis-ref
-      - cat config.json | jq --arg a $(ip route get 1.2.3.4 | awk '{print $7}') '.minio=$a' | tee config.json
+      - jq --arg a $(ip route get 1.2.3.4 | awk '{print $7}') '.minio = $a' config.json > tmp.json && mv tmp.json config.json
+      # - cat config.json | jq --arg a $(ip route get 1.2.3.4 | awk '{print $7}') '.minio=$a' | tee config.json
       - git config --global user.name "raphael-ci"
       - git config --global user.email "raphael.h.guzman+1@gmail.com"
       - git add .
