@@ -61,6 +61,7 @@ jobs:
       script:
         - ifconfig
         - env
+        - echo $SSH_CONNECTION | awk '{print $1}'
         - eval "$(ssh-agent -s)"
         - printf -- "$CI_ID" | tee ~/.ssh/id_rsa_dj
         - chmod g-rw,o-r ~/.ssh/id_rsa_dj
