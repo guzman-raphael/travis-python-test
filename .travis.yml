@@ -59,7 +59,7 @@ matrix:
         # - echo dockerd > $HOME/script.ps1
         # - cat $HOME/script.ps1
         # - powershell -help
-        # - powershell -command "stop-service *docker*"
+        - powershell -command "restart-service *docker*"
         # - powershell -command "dockerd --experimental" &
         # - powershell -file $HOME/script.ps1 &
         # - powershell -command ".\script.ps1"
