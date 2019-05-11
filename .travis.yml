@@ -77,8 +77,8 @@ install:
   - docker images
   - docker pull mcr.microsoft.com/windows/nanoserver:1803
   - docker images
-  - docker run -d mcr.microsoft.com/windows/nanoserver:1803 cmd.exe /c sleep 60
-  # - sleep 45
+  - docker run -d mcr.microsoft.com/windows/nanoserver:1803 cmd.exe /s /c sleep 60
+  - sleep 45
   - docker pull minherz/minio-server:nanoserver
   # - docker tag vitaliylebedev/nano-minio:latest minio:v1.0
   - docker run -d -p 9000:9000 -e "MINIO_ACCESS_KEY=datajoint" -e "MINIO_SECRET_KEY=datajoint" minherz/minio-server:nanoserver C:\tools\minio.exe server C:\Data
