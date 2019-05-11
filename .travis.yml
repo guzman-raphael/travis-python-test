@@ -59,7 +59,7 @@ matrix:
         # - echo dockerd > $HOME/script.ps1
         # - cat $HOME/script.ps1
         # - powershell -help
-        - powershell -command "restart-service *docker*"
+        # - powershell -command "stop-service *docker*"
         # - powershell -command "dockerd --experimental" &
         # - powershell -file $HOME/script.ps1 &
         # - powershell -command ".\script.ps1"
@@ -77,7 +77,7 @@ install:
   - docker images
   - docker pull mcr.microsoft.com/windows/nanoserver:1803
   - docker images
-  - docker run mcr.microsoft.com/windows/nanoserver:1803 cmd.exe /c echo "hi"
+  - docker run mcr.microsoft.com/windows/nanoserver:1803 /c echo "hi"
 
   # - docker pull vitaliylebedev/nano-minio:latest
   # - docker tag vitaliylebedev/nano-minio:latest minio:v1.0
