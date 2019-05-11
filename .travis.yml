@@ -77,7 +77,7 @@ install:
   - docker images
   - docker pull mcr.microsoft.com/windows/nanoserver:1803
   - docker images
-  - docker run microsoft/nanoserver:1803 dir
+  - docker run mcr.microsoft.com/windows/nanoserver:1803 dir
 
   # - docker pull vitaliylebedev/nano-minio:latest
   # - docker tag vitaliylebedev/nano-minio:latest minio:v1.0
