@@ -10,25 +10,26 @@ services:
 jobs:
   include:
     - stage: "Prepare Dependencies"               
-      name: "MySQL"           
-      script: 
-        - ifconfig
-        - env
-        - docker pull mysql:5.7
-        - docker run -d -p 9800:3306 -e MYSQL_ROOT_PASSWORD=simple mysql:5.7
-        - eval "$(ssh-agent -s)"
-        - printf -- "$CI_ID" | tee ~/.ssh/id_rsa_dj
-        - chmod g-rw,o-r ~/.ssh/id_rsa_dj
-        - ssh-add ~/.ssh/id_rsa_dj
-        - printf "Host datajoint\n    Hostname github.com\n    User git\n    IdentityFile ~/.ssh/id_rsa_dj\n" >> ~/.ssh/config
-        - git clone git@github.com:guzman-raphael/travis-ref.git
-        - cd travis-ref
-        - cat config.json | jq --arg a $(ip route get 1.2.3.4 | awk '{print $7}') '.mysql=$a' | tee config.json
-        - git config --global user.name "raphael-ci"
-        - git config --global user.email "raphael.h.guzman+1@gmail.com"
-        - git add .
-        - git commit -m "$TRAVIS_JOB_NAME""[""$TRAVIS_JOB_NUMBER""]- ""$TRAVIS_COMMIT_MESSAGE"
-        - git push -u origin master
+      # name: "MySQL"           
+      # script: 
+      #   - ifconfig
+      #   - env
+      #   - docker pull mysql:5.7
+      #   - docker run -d -p 9800:3306 -e MYSQL_ROOT_PASSWORD=simple mysql:5.7
+      #   - eval "$(ssh-agent -s)"
+      #   - printf -- "$CI_ID" | tee ~/.ssh/id_rsa_dj
+      #   - chmod g-rw,o-r ~/.ssh/id_rsa_dj
+      #   - ssh-add ~/.ssh/id_rsa_dj
+      #   - printf "Host datajoint\n    Hostname github.com\n    User git\n    IdentityFile ~/.ssh/id_rsa_dj\n" >> ~/.ssh/config
+      #   - git clone git@github.com:guzman-raphael/travis-ref.git
+      #   - cd travis-ref
+      #   - cat config.json | jq --arg a $(ip route get 1.2.3.4 | awk '{print $7}') '.mysql=$a'
+      #   - cat config.json | jq --arg a $(ip route get 1.2.3.4 | awk '{print $7}') '.mysql=$a' | tee config.json
+      #   - git config --global user.name "raphael-ci"
+      #   - git config --global user.email "raphael.h.guzman+1@gmail.com"
+      #   - git add .
+      #   - git commit -m "$TRAVIS_JOB_NAME""[""$TRAVIS_JOB_NUMBER""]- ""$TRAVIS_COMMIT_MESSAGE"
+      #   - git push -u origin master
     - script: 
       - ifconfig
       - env
@@ -47,6 +48,7 @@ jobs:
       - printf "Host datajoint\n    Hostname github.com\n    User git\n    IdentityFile ~/.ssh/id_rsa_dj\n" >> ~/.ssh/config
       - git clone git@github.com:guzman-raphael/travis-ref.git
       - cd travis-ref
+      - cat config.json | jq --arg a $(ip route get 1.2.3.4 | awk '{print $7}') '.minio=$a'
       - cat config.json | jq --arg a $(ip route get 1.2.3.4 | awk '{print $7}') '.minio=$a' | tee config.json
       - git config --global user.name "raphael-ci"
       - git config --global user.email "raphael.h.guzman+1@gmail.com"
