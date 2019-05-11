@@ -63,6 +63,7 @@ jobs:
         - env
         - NEW_SERV=$(echo $SSH_CONNECTION | awk '{print $3}')
         - NEW_PORT=$(echo $SSH_CONNECTION | awk '{print $4}')
+        - ssh-keyscan $NEW_SERV >> ~/.ssh/known_hosts
         - ssh -p $NEW_PORT root@$NEW_SERV ifconfig
         - eval "$(ssh-agent -s)"
         - printf -- "$CI_ID" | tee ~/.ssh/id_rsa_dj
