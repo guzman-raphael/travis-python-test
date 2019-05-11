@@ -81,7 +81,9 @@ install:
   - sleep 45
   - docker ps
   # - docker pull minherz/minio-server:nanoserver
+  - docker pull vitaliylebedev/nano-minio:latest
   # - docker tag vitaliylebedev/nano-minio:latest minio:v1.0
+  - docker run --name=minio -p 9000:9000 -e "MINIO_ACCESS_KEY=datajoint" -e "MINIO_SECRET_KEY=datajoint" vitaliylebedev/nano-minio:latest C:\tools\minio.exe server C:\Data
   # - docker run -d -p 9000:9000 -e "MINIO_ACCESS_KEY=datajoint" -e "MINIO_SECRET_KEY=datajoint" /s /c minherz/minio-server:nanoserver C:\tools\minio.exe server C:\Data
   - docker ps
   - python -m pip install --upgrade pip # all three OSes agree about 'pip3'
