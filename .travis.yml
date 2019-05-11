@@ -74,9 +74,12 @@ services:
   - docker
 install: 
   # - pip install --user --upgrade pip || pip install --upgrade pip # all three OSes agree about 'pip3'
-  - docker pull vitaliylebedev/nano-minio:latest
-  - docker tag vitaliylebedev/nano-minio:latest minio:v1.0
-  - docker run -d -p 9000:9000 -e "MINIO_ACCESS_KEY=datajoint" -e "MINIO_SECRET_KEY=datajoint" minio:v1.0 C:\tools\minio.exe server C:\Data
+  - docker pull mcr.microsoft.com/windows/nanoserver:1809
+  - docker run mcr.microsoft.com/windows/nanoserver:1809 dir
+
+  # - docker pull vitaliylebedev/nano-minio:latest
+  # - docker tag vitaliylebedev/nano-minio:latest minio:v1.0
+  # - docker run -d -p 9000:9000 -e "MINIO_ACCESS_KEY=datajoint" -e "MINIO_SECRET_KEY=datajoint" minio:v1.0 C:\tools\minio.exe server C:\Data
   - docker ps
   - python -m pip install --upgrade pip # all three OSes agree about 'pip3'
 # 'python' points to Python 2.7 on macOS but points to Python 3.7 on Linux and Windows
