@@ -27,7 +27,7 @@ jobs:
         - git config --global user.name "raphael-ci"
         - git config --global user.email "raphael.h.guzman+1@gmail.com"
         - git add .
-        - git commit -m "$TRAVIS_JOB_NAME""[""$TRAVIS_JOB_NUMBER"""]- ""$TRAVIS_COMMIT_MESSAGE"
+        - git commit -m "$TRAVIS_JOB_NAME""[""$TRAVIS_JOB_NUMBER""]- ""$TRAVIS_COMMIT_MESSAGE"
         - git push -u origin master
     - script: 
       - ifconfig
@@ -51,7 +51,7 @@ jobs:
       - git config --global user.name "raphael-ci"
       - git config --global user.email "raphael.h.guzman+1@gmail.com"
       - git add .
-      - git commit -m "$TRAVIS_JOB_NAME""[""$TRAVIS_JOB_NUMBER"""]- ""$TRAVIS_COMMIT_MESSAGE"
+      - git commit -m "$TRAVIS_JOB_NAME""[""$TRAVIS_JOB_NUMBER""]- ""$TRAVIS_COMMIT_MESSAGE"
       - git push -u origin master
       name: "Minio"     
     - stage: "Tests"
