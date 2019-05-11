@@ -74,8 +74,8 @@ services:
   - docker
 install: 
   # - pip install --user --upgrade pip || pip install --upgrade pip # all three OSes agree about 'pip3'
-  - docker pull mcr.microsoft.com/windows/nanoserver:1809
-  - docker run mcr.microsoft.com/windows/nanoserver:1809 dir
+  - docker pull mcr.microsoft.com/windows/nanoserver:1803
+  - docker run mcr.microsoft.com/windows/nanoserver:1803 dir
 
   # - docker pull vitaliylebedev/nano-minio:latest
   # - docker tag vitaliylebedev/nano-minio:latest minio:v1.0
