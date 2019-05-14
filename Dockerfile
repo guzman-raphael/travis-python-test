@@ -1,6 +1,9 @@
 # FROM mcr.microsoft.com/windows/nanoserver:1803-amd64
+
 # FROM vitaliylebedev/nano-minio:latest
-FROM minherz/minio-server:nanoserver
+# FROM minherz/minio-server:nanoserver
+FROM vitaliylebedev/windows-minio:latest
+
 ENV MINIO_ACCESS_KEY datajoint
 ENV MINIO_SECRET_KEY datajoint
 
