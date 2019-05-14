@@ -28,12 +28,10 @@ WORKDIR C:/minio
 RUN mkdir data
 RUN pwsh -NoLogo -NoProfile -Command "Invoke-WebRequest -Uri https://dl.minio.io/server/minio/release/windows-amd64/minio.exe -OutFile minio.exe"
 
-RUN pwsh -NoLogo -NoProfile -Command '`
-ICACLS "minio.exe" /setowner "administrator" `
-ICACLS "minio.exe" /grant:r "administrator:(F)" /C `
-ICACLS "minio.exe" /grant:r "users:(RX)" /C `
-ICACLS "minio.exe" /grant:r "users:(R)" /C `
-'
+RUN pwsh -NoLogo -NoProfile -Command 'ICACLS "minio.exe" /setowner "administrator"'
+RUN pwsh -NoLogo -NoProfile -Command 'ICACLS "minio.exe" /grant:r "administrator:(F)" /C'
+RUN pwsh -NoLogo -NoProfile -Command 'ICACLS "minio.exe" /grant:r "users:(RX)" /C'
+RUN pwsh -NoLogo -NoProfile -Command 'ICACLS "minio.exe" /grant:r "users:(R)" /C'
 
 VOLUME [ "C:/minio/data" ]
 EXPOSE 9000
