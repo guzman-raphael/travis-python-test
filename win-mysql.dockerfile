@@ -15,7 +15,7 @@ MAINTAINER raphael.h.guzman@gmail.com
 #     Start-Service mysql ; \
 #     Remove-Item c:\mysql.zip -Force
 
-ADD https://dev.mysql.com/get/Downloads/MySQL-5.7/mysql-installer-web-community-5.7.9.0.msi C:\mysql-5.7.9.0.msi
+ADD https://dev.mysql.com/get/Downloads/MySQL-5.7/mysql-installer-web-community-5.7.9.0.msi /c/mysql-5.7.9.0.msi
 
 SHELL ["pwsh", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
 RUN Start-Process 'C:\mysql-5.7.9.0.msi' '/qn' -PassThru | Wait-Process;
