@@ -26,8 +26,7 @@ MAINTAINER raphael.h.guzman@gmail.com
 ENV MINIO_ACCESS_KEY datajoint
 ENV MINIO_SECRET_KEY datajoint
 
-WORKDIR C:/minio
-RUN mkdir data
+WORKDIR C:/minio-mc
 RUN pwsh -NoLogo -NoProfile -Command "Invoke-WebRequest -Uri https://dl.minio.io/client/mc/release/windows-amd64/mc.exe -OutFile mc.exe"
 
 
@@ -43,7 +42,7 @@ RUN pwsh -NoLogo -NoProfile -Command "Invoke-WebRequest -Uri https://dl.minio.io
 # RUN pwsh -NoLogo -NoProfile -Command '$acl = Get-Acl "minio.exe";$perm = "administrator", "FullControl", "None", "None", "Allow";$rule = New-Object -TypeName System.Security.AccessControl.FileSystemAccessRule -ArgumentList $perm;$acl.SetAccessRule($rule);$acl | Set-Acl -Path "minio.exe"'
 
 # VOLUME [ "C:/minio/data" ]
-EXPOSE 9000
-ENTRYPOINT [ "C:/minio/mc.exe" ]
-CMD [ "server" , "--config-dir" , "config" , "data" ]
+# EXPOSE 9000
+ENTRYPOINT [ "C:/minio-mc/mc.exe" ]
+CMD [ "config" , "host" , "add" , "dj-s3", "http://127.0.0.1:9000", "datajoint" , "datajoint"]
 # CMD [ "Get-Acl","-Path",'"minio.exe"',"|","Format-Table","-Wrap" ]
