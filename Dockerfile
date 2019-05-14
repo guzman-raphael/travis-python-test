@@ -5,7 +5,7 @@ ENV MINIO_SECRET_KEY datajoint
 
 EXPOSE 9000
 
-ENTRYPOINT C:\tools\minio.exe
+ENTRYPOINT C:\\tools\\minio.exe
 
 # CMD ["/s","/c","echo","look here"]
 CMD ["server", "C:\\Data"]
