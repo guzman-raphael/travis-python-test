@@ -19,7 +19,9 @@
 
 
 # FROM mcr.microsoft.com/windows/nanoserver:1803-amd64
+FROM mcr.microsoft.com/windows/servercore-insider as core 
 FROM mcr.microsoft.com/powershell:6.2.0-nanoserver-1803
+COPY --from=core /windows/system32/netapi32.dll
 
 MAINTAINER raphael.h.guzman@gmail.com
 
