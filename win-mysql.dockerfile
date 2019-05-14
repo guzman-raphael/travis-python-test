@@ -12,7 +12,7 @@ RUN pwsh -NoLogo -NoProfile -Command \
     Expand-Archive -Path c:\mysql.zip -DestinationPath C:\ ; \
     ren C:\mysql-5.7.22-winx64 C:\MySQL ; \
     New-Item -Path C:\MySQL\data -ItemType directory ; \
-    Remove-Item c:\mysql.zip -Force ; \
+    # Remove-Item c:\mysql.zip -Force ; \
     C:\MySQL\bin\mysqld.exe --initialize --log_syslog=0
     # C:\MySQL\bin\mysqld.exe --initialize --console --explicit_defaults_for_timestamp ; \
     # C:\MySQL\bin\mysqld.exe --install ; \
