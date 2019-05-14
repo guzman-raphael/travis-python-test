@@ -26,7 +26,7 @@ ENV MINIO_SECRET_KEY datajoint
 
 WORKDIR C:/minio
 RUN mkdir data config
-RUN powershell "Invoke-WebRequest -Uri https://dl.minio.io/server/minio/release/windows-amd64/minio.exe -OutFile minio.exe"
+RUN pwsh "Invoke-WebRequest -Uri https://dl.minio.io/server/minio/release/windows-amd64/minio.exe -OutFile minio.exe"
 VOLUME [ "C:/minio/data", "C:/minio/config" ]
 EXPOSE 9000
 ENTRYPOINT [ "C:/minio/minio.exe" ]
