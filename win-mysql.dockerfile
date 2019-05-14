@@ -10,9 +10,11 @@ RUN pwsh -NoLogo -NoProfile -Command \
     Expand-Archive -Path c:\mysql.zip -DestinationPath C:\ ; \
     ren C:\mysql-5.7.22-winx64 C:\MySQL ; \
     New-Item -Path C:\MySQL\data -ItemType directory ; \
-    C:\MySQL\bin\mysqld.exe --initialize --console --explicit_defaults_for_timestamp ; \
-    C:\MySQL\bin\mysqld.exe --install ; \
-    Start-Service mysql ; \
+    C:\MySQL\bin\mysqld.exe --initialize ; \
+    C:\MySQL\bin\mysqld.exe --console ; \
+    # C:\MySQL\bin\mysqld.exe --initialize --console --explicit_defaults_for_timestamp ; \
+    # C:\MySQL\bin\mysqld.exe --install ; \
+    # Start-Service mysql ; \
     Remove-Item c:\mysql.zip -Force
 
 # ADD https://dev.mysql.com/get/Downloads/MySQL-5.7/mysql-installer-web-community-5.7.9.0.msi c:/mysql-5.7.9.0.msi
