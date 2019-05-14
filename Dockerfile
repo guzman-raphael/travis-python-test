@@ -28,10 +28,17 @@ WORKDIR C:/minio
 RUN mkdir data
 RUN pwsh -NoLogo -NoProfile -Command "Invoke-WebRequest -Uri https://dl.minio.io/server/minio/release/windows-amd64/minio.exe -OutFile minio.exe"
 
-RUN pwsh -NoLogo -NoProfile -Command 'ICACLS "minio.exe" /setowner "administrator"'
-RUN pwsh -NoLogo -NoProfile -Command 'ICACLS "minio.exe" /grant:r "administrator:(F)" /C'
-RUN pwsh -NoLogo -NoProfile -Command 'ICACLS "minio.exe" /grant:r "users:(RX)" /C'
-RUN pwsh -NoLogo -NoProfile -Command 'ICACLS "minio.exe" /grant:r "users:(R)" /C'
+# RUN pwsh -NoLogo -NoProfile -Command 'ICACLS "minio.exe" /setowner "administrator"'
+# RUN pwsh -NoLogo -NoProfile -Command 'ICACLS "minio.exe" /grant:r "administrator:(F)" /C'
+# RUN pwsh -NoLogo -NoProfile -Command 'ICACLS "minio.exe" /grant:r "users:(RX)" /C'
+# RUN pwsh -NoLogo -NoProfile -Command 'ICACLS "minio.exe" /grant:r "users:(R)" /C'
+
+
+RUN pwsh -NoLogo -NoProfile -Command '$acl = Get-Acl "minio.exe"'
+RUN pwsh -NoLogo -NoProfile -Command '$perm = "administrator", "FullControl", "None", "None", "Allow"'
+RUN pwsh -NoLogo -NoProfile -Command '$rule = New-Object -TypeName System.Security.AccessControl.FileSystemAccessRule -ArgumentList $perm'
+RUN pwsh -NoLogo -NoProfile -Command '$acl.SetAccessRule($rule)'
+RUN pwsh -NoLogo -NoProfile -Command "$acl | Set-Acl -Path "minio.exe""
 
 VOLUME [ "C:/minio/data" ]
 EXPOSE 9000
