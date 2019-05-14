@@ -40,7 +40,7 @@ RUN pwsh -NoLogo -NoProfile -Command 'icacls "minio.exe" /grant Everyone:(OI)(CI
 # RUN pwsh -NoLogo -NoProfile -Command 'whoami'
 # RUN pwsh -NoLogo -NoProfile -Command '$acl = Get-Acl "minio.exe";$perm = "administrator", "FullControl", "None", "None", "Allow";$rule = New-Object -TypeName System.Security.AccessControl.FileSystemAccessRule -ArgumentList $perm;$acl.SetAccessRule($rule);$acl | Set-Acl -Path "minio.exe"'
 
-VOLUME [ "C:/minio/data" ]
+# VOLUME [ "C:/minio/data" ]
 EXPOSE 9000
 ENTRYPOINT [ "C:/minio/minio.exe" ]
 CMD [ "server" , "--config-dir" , "config" , "data" ]
