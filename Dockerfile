@@ -33,7 +33,7 @@ RUN pwsh -NoLogo -NoProfile -Command "Invoke-WebRequest -Uri https://dl.minio.io
 # RUN pwsh -NoLogo -NoProfile -Command 'ICACLS "minio.exe" /grant:r "users:(RX)" /C'
 # RUN pwsh -NoLogo -NoProfile -Command 'ICACLS "minio.exe" /grant:r "users:(R)" /C'
 
-RUN cmd.exe /s /c whoami
+RUN whoami
 RUN pwsh -NoLogo -NoProfile -Command '$acl = Get-Acl "minio.exe";$perm = "administrator", "FullControl", "None", "None", "Allow";$rule = New-Object -TypeName System.Security.AccessControl.FileSystemAccessRule -ArgumentList $perm;$acl.SetAccessRule($rule);$acl | Set-Acl -Path "minio.exe"'
 
 VOLUME [ "C:/minio/data" ]
