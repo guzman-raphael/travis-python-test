@@ -25,7 +25,7 @@ RUN pwsh -NoLogo -NoProfile -Command \
 # RUN Start-Process 'C:\mysql-5.7.9.0.msi' '/qn' -PassThru | Wait-Process;
 
 
-# SHELL ["cmd", "/C"]
+SHELL ["cmd", "/C"]
 
 
 # RUN echo hi
