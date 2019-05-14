@@ -18,7 +18,9 @@ MAINTAINER raphael.h.guzman@gmail.com
 ADD https://dev.mysql.com/get/Downloads/MySQL-5.7/mysql-installer-web-community-5.7.9.0.msi mysql-5.7.9.0.msi
 
 SHELL ["pwsh", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
-RUN Start-Process 'mysql-5.7.9.0.msi' '/qn' -PassThru | Wait-Process;
+RUN Start-Process 'C:\mysql-5.7.9.0.msi' '/qn' -PassThru | Wait-Process;
+
+
 SHELL ["cmd", "/C"]
 
 
