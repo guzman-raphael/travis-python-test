@@ -28,7 +28,7 @@ ENV MINIO_SECRET_KEY datajoint
 
 WORKDIR C:/minio
 RUN mkdir data
-RUN pwsh -NoLogo -NoProfile -Command "Invoke-WebRequest -Uri https://dl.minio.io/server/minio/release/windows-amd64/minio.exe -OutFile minio.exe"
+RUN pwsh -NoLogo -NoProfile -Command "Invoke-WebRequest -Uri https://dl.minio.io/client/mc/release/windows-amd64/mc.exe -OutFile mc.exe"
 
 
 # RUN pwsh -NoLogo -NoProfile -Command 'icacls "minio.exe" /grant Everyone:(OI)(CI)F /T'
@@ -44,6 +44,6 @@ RUN pwsh -NoLogo -NoProfile -Command "Invoke-WebRequest -Uri https://dl.minio.io
 
 # VOLUME [ "C:/minio/data" ]
 EXPOSE 9000
-ENTRYPOINT [ "C:/minio/minio.exe" ]
+ENTRYPOINT [ "C:/minio/mc.exe" ]
 CMD [ "server" , "--config-dir" , "config" , "data" ]
 # CMD [ "Get-Acl","-Path",'"minio.exe"',"|","Format-Table","-Wrap" ]
