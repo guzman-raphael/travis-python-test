@@ -77,7 +77,8 @@ install:
   - docker images
   - docker pull mcr.microsoft.com/windows/nanoserver:1803-amd64
   - docker images
-  - docker run mcr.microsoft.com/windows/nanoserver:1803-amd64 cmd.exe /s /c ping 127.0.0.1 -n 60 > nul
+  - docker build -t test:v1.0 .
+  - docker run test:v1.0
   - sleep 45
   - docker ps
   # - docker pull minherz/minio-server:nanoserver
