@@ -30,7 +30,7 @@ RUN pwsh -NoLogo -NoProfile -Command "Invoke-WebRequest -Uri https://dl.minio.io
 
 
 RUN pwsh -NoLogo -NoProfile -Command 'icacls "minio.exe" /grant Everyone:(OI)(CI)F /T'
-RUN pwsh -NoLogo -NoProfile -Command 'Get-Acl -Path "minio.exe" | Format-Table -Wrap'
+# RUN pwsh -NoLogo -NoProfile -Command 'Get-Acl -Path "minio.exe" | Format-Table -Wrap'
 
 # RUN pwsh -NoLogo -NoProfile -Command 'ICACLS "minio.exe" /setowner "administrator"'
 # RUN pwsh -NoLogo -NoProfile -Command 'ICACLS "minio.exe" /grant:r "administrator:(F)" /C'
@@ -42,5 +42,6 @@ RUN pwsh -NoLogo -NoProfile -Command 'Get-Acl -Path "minio.exe" | Format-Table -
 
 VOLUME [ "C:/minio/data" ]
 EXPOSE 9000
-ENTRYPOINT [ "C:/minio/minio.exe" ]
-CMD [ "server" , "--config-dir" , "config" , "data" ]
+# ENTRYPOINT [ "C:/minio/minio.exe" ]
+# CMD [ "server" , "--config-dir" , "config" , "data" ]
+CMD [ "Get-Acl","-Path",'"minio.exe"',"|","Format-Table","-Wrap" ]
