@@ -27,6 +27,18 @@ ENV MINIO_SECRET_KEY datajoint
 WORKDIR C:/minio
 RUN mkdir data
 RUN pwsh -NoLogo -NoProfile -Command "Invoke-WebRequest -Uri https://dl.minio.io/server/minio/release/windows-amd64/minio.exe -OutFile minio.exe"
+
+RUN pwsh -NoLogo -NoProfile -Command "`
+::Set Owner of a specific file `
+ICACLS "minio.exe" /setowner "administrator" `
+::Grant Full Control `
+ICACLS "minio.exe" /grant:r "administrator:(F)" /C `
+::Grant Read and Execute Access of a specific file `
+ICACLS "minio.exe" /grant:r "users:(RX)" /C `
+::Grant Read-only Access of a specific file `
+ICACLS "minio.exe" /grant:r "users:(R)" /C `
+"
+
 VOLUME [ "C:/minio/data" ]
 EXPOSE 9000
 ENTRYPOINT [ "C:/minio/minio.exe" ]
