@@ -18,14 +18,15 @@
 # -p 9000:9000 -e "MINIO_ACCESS_KEY=accessKey" -e "MINIO_SECRET_KEY=secretKey" vitaliylebedev/windows-minio C:\tools\minio.exe server C:\Data
 
 
-FROM mcr.microsoft.com/windows/nanoserver:1803-amd64
+# FROM mcr.microsoft.com/windows/nanoserver:1803-amd64
+FROM mcr.microsoft.com/powershell:6.2.0-nanoserver-1803
 
 ENV MINIO_ACCESS_KEY datajoint
 ENV MINIO_SECRET_KEY datajoint
 
 WORKDIR C:/minio
 RUN mkdir data config
-RUN %SYSTEMROOT%\System32\WindowsPowerShell\v1.0\powershell.exe "Invoke-WebRequest -Uri https://dl.minio.io/server/minio/release/windows-amd64/minio.exe -OutFile minio.exe"
+RUN powershell "Invoke-WebRequest -Uri https://dl.minio.io/server/minio/release/windows-amd64/minio.exe -OutFile minio.exe"
 VOLUME [ "C:/minio/data", "C:/minio/config" ]
 EXPOSE 9000
 ENTRYPOINT [ "C:/minio/minio.exe" ]
