@@ -75,9 +75,9 @@ services:
 install: 
   # - pip install --user --upgrade pip || pip install --upgrade pip # all three OSes agree about 'pip3'
   - docker images
-  - docker pull mcr.microsoft.com/windows/nanoserver:1803
+  - docker pull mcr.microsoft.com/windows/nanoserver:1803-amd64
   - docker images
-  - docker run -d mcr.microsoft.com/windows/nanoserver:1803 sleep 60
+  - docker run mcr.microsoft.com/windows/nanoserver:1803-amd64 cmd.exe /s /c echo hello
   - sleep 45
   - docker ps
   # - docker pull minherz/minio-server:nanoserver
