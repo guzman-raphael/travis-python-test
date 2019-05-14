@@ -25,7 +25,7 @@ ENV MINIO_ACCESS_KEY datajoint
 ENV MINIO_SECRET_KEY datajoint
 
 WORKDIR C:/minio
-RUN mkdir data config
+RUN mkdir data
 RUN pwsh -NoLogo -NoProfile -Command "Invoke-WebRequest -Uri https://dl.minio.io/server/minio/release/windows-amd64/minio.exe -OutFile minio.exe"
 VOLUME [ "C:/minio/data", "C:/minio/config" ]
 EXPOSE 9000
