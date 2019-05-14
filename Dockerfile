@@ -38,7 +38,7 @@ RUN pwsh -NoLogo -NoProfile -Command '$acl = Get-Acl "minio.exe"'
 RUN pwsh -NoLogo -NoProfile -Command '$perm = "administrator", "FullControl", "None", "None", "Allow"'
 RUN pwsh -NoLogo -NoProfile -Command '$rule = New-Object -TypeName System.Security.AccessControl.FileSystemAccessRule -ArgumentList $perm'
 RUN pwsh -NoLogo -NoProfile -Command '$acl.SetAccessRule($rule)'
-RUN pwsh -NoLogo -NoProfile -Command "$acl | Set-Acl -Path "minio.exe""
+RUN pwsh -NoLogo -NoProfile -Command '$acl | Set-Acl -Path "minio.exe"'
 
 VOLUME [ "C:/minio/data" ]
 EXPOSE 9000
