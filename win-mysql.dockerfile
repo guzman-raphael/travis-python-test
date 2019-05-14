@@ -33,7 +33,7 @@ RUN pwsh -NoLogo -NoProfile -Command \
 
     
 ENV MYSQL C:\\MySQL
-RUN setx PATH /M %PATH%;C:\MySQL\bin
+# RUN setx PATH /M %PATH%;C:\MySQL\bin
 
 
 EXPOSE 3306
