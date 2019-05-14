@@ -33,12 +33,8 @@ RUN pwsh -NoLogo -NoProfile -Command "Invoke-WebRequest -Uri https://dl.minio.io
 # RUN pwsh -NoLogo -NoProfile -Command 'ICACLS "minio.exe" /grant:r "users:(RX)" /C'
 # RUN pwsh -NoLogo -NoProfile -Command 'ICACLS "minio.exe" /grant:r "users:(R)" /C'
 
-
-RUN pwsh -NoLogo -NoProfile -Command '$acl = Get-Acl "minio.exe"'
-RUN pwsh -NoLogo -NoProfile -Command '$perm = "administrator", "FullControl", "None", "None", "Allow"'
-RUN pwsh -NoLogo -NoProfile -Command '$rule = New-Object -TypeName System.Security.AccessControl.FileSystemAccessRule -ArgumentList $perm'
-RUN pwsh -NoLogo -NoProfile -Command '$acl.SetAccessRule($rule)'
-RUN pwsh -NoLogo -NoProfile -Command '$acl | Set-Acl -Path "minio.exe"'
+RUN pwsh -NoLogo -NoProfile -Command 'whoami'
+RUN pwsh -NoLogo -NoProfile -Command '$acl = Get-Acl "minio.exe";$perm = "administrator", "FullControl", "None", "None", "Allow";$rule = New-Object -TypeName System.Security.AccessControl.FileSystemAccessRule -ArgumentList $perm;$acl.SetAccessRule($rule);$acl | Set-Acl -Path "minio.exe"'
 
 VOLUME [ "C:/minio/data" ]
 EXPOSE 9000
