@@ -1,41 +1,56 @@
-# FROM nanoserver/iis-php
 FROM mcr.microsoft.com/powershell:6.2.0-nanoserver-1803
 
-MAINTAINER raphael.h.guzman@gmail.com
+SHELL ["pwsh", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
 
-ENV MYSQL_ROOT_PASSWORD simple
+ENV PYTHON_VERSION 3.7.3
+ENV PYTHON_RELEASE 3.7.3
 
-ADD https://dev.mysql.com/get/Downloads/MySQL-5.7/mysql-5.7.22-winx64.zip mysql.zip
-# ADD https://dev.mysql.com/get/Downloads/MySQL-5.7/mysql-5.7.9-winx64.zip mysql.zip
+RUN $url = ('https://www.python.org/ftp/python/{0}/python-{1}-amd64.exe' -f $env:PYTHON_RELEASE, $env:PYTHON_VERSION); \
+	Write-Host ('Downloading {0} ...' -f $url); \
+	[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; \
+	Invoke-WebRequest -Uri $url -OutFile 'python.exe'; \
+	\
+	Write-Host 'Installing ...'; \
+# https://docs.python.org/3.5/using/windows.html#installing-without-ui
+	Start-Process python.exe -Wait \
+		-ArgumentList @( \
+			'/quiet', \
+			'InstallAllUsers=1', \
+			'TargetDir=C:\Python', \
+			'PrependPath=1', \
+			'Shortcuts=0', \
+			'Include_doc=0', \
+			'Include_pip=0', \
+			'Include_test=0' \
+		); \
+	\
+# the installer updated PATH, so we should refresh our local value
+	$env:PATH = [Environment]::GetEnvironmentVariable('PATH', [EnvironmentVariableTarget]::Machine); \
+	\
+	Write-Host 'Verifying install ...'; \
+	Write-Host '  python --version'; python --version; \
+	\
+	Write-Host 'Removing ...'; \
+	Remove-Item python.exe -Force; \
+	\
+	Write-Host 'Complete.';
 
-RUN pwsh -NoLogo -NoProfile -Command \
-    Expand-Archive -Path c:\mysql.zip -DestinationPath C:\ ; \
-    ren C:\mysql-5.7.22-winx64 C:\MySQL ; \
-    New-Item -Path C:\MySQL\data -ItemType directory ; \
-    # Remove-Item c:\mysql.zip -Force ; \
-    C:\MySQL\bin\mysqld.exe --initialize --log_syslog=0
-    # C:\MySQL\bin\mysqld.exe --initialize --console --explicit_defaults_for_timestamp ; \
-    # C:\MySQL\bin\mysqld.exe --install ; \
-    # Start-Service mysql ; \
-    # Remove-Item c:\mysql.zip -Force
+# if this is called "PIP_VERSION", pip explodes with "ValueError: invalid truth value '<VERSION>'"
+ENV PYTHON_PIP_VERSION 19.1.1
 
-# ADD https://dev.mysql.com/get/Downloads/MySQL-5.7/mysql-installer-web-community-5.7.9.0.msi c:/mysql-5.7.9.0.msi
+RUN Write-Host ('Installing pip=={0} ...' -f $env:PYTHON_PIP_VERSION); \
+	[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; \
+	Invoke-WebRequest -Uri 'https://bootstrap.pypa.io/get-pip.py' -OutFile 'get-pip.py'; \
+	python get-pip.py \
+		--disable-pip-version-check \
+		--no-cache-dir \
+		('pip=={0}' -f $env:PYTHON_PIP_VERSION) \
+	; \
+	Remove-Item get-pip.py -Force; \
+	\
+	Write-Host 'Verifying pip install ...'; \
+	pip --version; \
+	\
+	Write-Host 'Complete.';
 
-# SHELL ["pwsh", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
-# RUN Start-Process 'C:\mysql-5.7.9.0.msi' '/qn' -PassThru | Wait-Process;
-
-
-# SHELL ["cmd", "/C"]
-
-
-# RUN echo hi
-# RUN msiexec /i mysql-5.7.9.0.msi /quiet
-
-    
-ENV MYSQL C:\\MySQL
-# RUN setx PATH /M %PATH%;C:\MySQL\bin
-
-
-EXPOSE 3306
-ENTRYPOINT [ "C:/MySQL/bin/mysqld.exe" ]
-CMD [ "--console" , "--log_syslog=0" ]
+CMD ["python"]

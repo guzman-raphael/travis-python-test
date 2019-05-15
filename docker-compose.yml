@@ -40,6 +40,17 @@ services:
     networks:
       - main
 
+  # datajoint:
+  #   build:
+  #     context: .
+  #     dockerfile: win-dj.dockerfile
+  #   image: dj:v1.0
+  #   depends_on:
+  #     - minio-mc
+  #     - mysqlref
+  #   networks:
+  #     - main
+
 networks:
   main:
     ipam:
