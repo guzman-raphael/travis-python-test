@@ -10,6 +10,16 @@ services:
     networks:
       - main
 
+  mysqlref:
+    build:
+      context: .
+      dockerfile: win-mysql.dockerfile
+    image: mysql:v1.0
+    # ports:
+    #   - "3306:3306"
+    networks:
+      - main
+
   minio-mc:
     build:
       context: .
@@ -17,6 +27,16 @@ services:
     image: minio_mc:v1.0
     depends_on:
       - minio
+    networks:
+      - main
+
+  mysql-client:
+    build:
+      context: .
+      dockerfile: win-mysql-cleint.dockerfile
+    image: mysql_client:v1.0
+    depends_on:
+      - mysqlref
     networks:
       - main
 
