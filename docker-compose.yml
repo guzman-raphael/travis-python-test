@@ -40,17 +40,17 @@ services:
     networks:
       - main
 
-  datajoint:
-    build:
-      context: .
-      dockerfile: win-dj.dockerfile
-    image: dj:v1.0
-    depends_on:
-      - minio-mc
-      - mysqlref
-    networks:
-      - main
-    user: Administrator
+  # datajoint:
+  #   build:
+  #     context: .
+  #     dockerfile: win-dj.dockerfile
+  #   image: dj:v1.0
+  #   depends_on:
+  #     - minio-mc
+  #     - mysqlref
+  #   networks:
+  #     - main
+  #   user: Administrator
 
 networks:
   main:
