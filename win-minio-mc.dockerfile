@@ -50,5 +50,7 @@ RUN pwsh -NoLogo -NoProfile -Command "Invoke-WebRequest -Uri https://dl.minio.io
 # CMD [ "config" , "host" , "add" , "dj-s3", "http://minio:9000", "datajoint" , "datajoint"]
 # CMD [ "Get-Acl","-Path",'"minio.exe"',"|","Format-Table","-Wrap" ]
 
+RUN setx /M PATH $($Env:PATH + ';C:\minio-mc')
+
 ENTRYPOINT ["pwsh.exe" , "-NoLogo", "-NoProfile", "-Command"]
-CMD ["C:/minio-mc/mc.exe config host add dj-s3 http://minio:9000 datajoint datajoint"]
+CMD ["mc.exe config host add dj-s3 http://minio:9000 datajoint datajoint"]
