@@ -1,0 +1,27 @@
+version: '3.4'
+services:
+  minio:
+    build:
+      context: .
+      dockerfile: win-minio.dockerfile
+    image: minio:v1.0
+    # ports:
+    #   - "9000:9000"
+    networks:
+      - main
+
+  minio-mc:
+    build:
+      context: .
+      dockerfile: win-minio-mc.dockerfile
+    image: minio_mc:v1.0
+    depends_on:
+      - minio
+    networks:
+      - main
+
+networks:
+  main:
+    ipam:
+      config:
+        - subnet: "172.168.1.5/24"
