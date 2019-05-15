@@ -28,7 +28,9 @@ RUN $url = ('https://www.python.org/ftp/python/{0}/python-{1}-amd64.exe' -f $env
 			'Include_test=0' \
 		)
 
+SHELL ["cmd", "/C"]
 RUN setx path "%path%;C:\python"
+SHELL ["pwsh", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
 
 RUN \
 # the installer updated PATH, so we should refresh our local value
