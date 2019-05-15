@@ -94,7 +94,7 @@ install:
   # - docker run --network="nat" minio_mc:v1.0
   # - docker ps
   - docker ps
-  - docker-compose up --build --exit-code-from datajoint
+  - docker-compose up --build --exit-code-from mysql-client
   # - docker pull minherz/minio-server:nanoserver
   # - docker pull vitaliylebedev/nano-minio:latest
   # - docker tag vitaliylebedev/nano-minio:latest minio:v1.0
