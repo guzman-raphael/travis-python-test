@@ -27,7 +27,9 @@ RUN $url = ('https://www.python.org/ftp/python/{0}/python-{1}-amd64.exe' -f $env
 			'Include_pip=0', \
 			'Include_test=0' \
 		)
-        
+
+RUN setx path "%path%;C:\python"
+
 RUN \
 # the installer updated PATH, so we should refresh our local value
     # setx PATH /M %PATH%;C:\python ; \
