@@ -38,7 +38,7 @@ RUN \
 	$env:PATH = [Environment]::GetEnvironmentVariable('PATH', [EnvironmentVariableTarget]::Machine); \
 	\
 	Write-Host 'Verifying install ...'; \
-	Write-Host '  python --version'; python --version; \
+	Write-Host '  python --version'; C:\base\python.exe --version; \
 	\
 	Write-Host 'Removing ...'; \
 	Remove-Item python.exe -Force; \
