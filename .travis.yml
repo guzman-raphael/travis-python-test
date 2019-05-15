@@ -76,28 +76,28 @@ install:
   # - pip install --user --upgrade pip || pip install --upgrade pip # all three OSes agree about 'pip3'
   # - docker images
   # - docker pull mcr.microsoft.com/windows/nanoserver:1803-amd64
-  - docker images
-  - docker build -t minio:v1.0 -f win-minio.dockerfile .
-  - docker images
-  - docker run -d -p 9000:9000 minio:v1.0
-  - docker ps
-  - docker build -t mysql:v1.0 -f win-mysql.dockerfile .
-  - docker images
-  - docker run -d -p 3306:3306 mysql:v1.0
-  - sleep 45
-  - docker ps
-  # - docker build -t minio_mc:v1.0 -f win-minio-mc.dockerfile .
   # - docker images
-  # - docker run minio_mc:v1.0
+  # - docker build -t minio:v1.0 -f win-minio.dockerfile .
+  # - docker images
+  # - docker run -d -p 9000:9000 minio:v1.0
   # - docker ps
+  # - docker build -t mysql:v1.0 -f win-mysql.dockerfile .
+  # - docker images
+  # - docker run -d -p 3306:3306 mysql:v1.0
+  # - sleep 45
+  # - docker ps
+  - docker build -t minio_mc:v1.0 -f win-minio-mc.dockerfile .
+  - docker images
+  - docker run minio_mc:v1.0
+  - docker ps
   # - docker pull minherz/minio-server:nanoserver
   # - docker pull vitaliylebedev/nano-minio:latest
   # - docker tag vitaliylebedev/nano-minio:latest minio:v1.0
   # - docker run --name=minio -p 9000:9000 -e "MINIO_ACCESS_KEY=datajoint" -e "MINIO_SECRET_KEY=datajoint" vitaliylebedev/nano-minio:latest C:\tools\minio.exe server C:\Data
   # - docker run -d -p 9000:9000 -e "MINIO_ACCESS_KEY=datajoint" -e "MINIO_SECRET_KEY=datajoint" /s /c minherz/minio-server:nanoserver C:\tools\minio.exe server C:\Data
-  - docker ps
+  # - docker ps
   - python -m pip install --upgrade pip # all three OSes agree about 'pip3'
-  - python -m pip install --upgrade pandas numpy networkx backcall matplotlib datajoint
+  # - python -m pip install --upgrade pandas numpy networkx backcall matplotlib datajoint
 # 'python' points to Python 2.7 on macOS but points to Python 3.7 on Linux and Windows
 # 'python3' is a 'command not found' error on Windows but 'py' works on Windows only
 # before_script:
