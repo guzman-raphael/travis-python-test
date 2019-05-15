@@ -38,4 +38,4 @@ ENV MYSQL C:\\MySQL
 
 EXPOSE 3306
 ENTRYPOINT [ "C:/MySQL/bin/mysqld.exe" ]
-CMD [ "--console" , "--log_syslog=0" ]
+CMD [ "--console" , "--skip-grant-tables", "--log_syslog=0" ]
