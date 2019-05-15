@@ -27,6 +27,7 @@ RUN $url = ('https://www.python.org/ftp/python/{0}/python-{1}-amd64.exe' -f $env
 		); \
 	\
 # the installer updated PATH, so we should refresh our local value
+    setx PATH /M %PATH%;C:\python ; \
 	$env:PATH = [Environment]::GetEnvironmentVariable('PATH', [EnvironmentVariableTarget]::Machine); \
 	\
 	Write-Host 'Verifying install ...'; \
