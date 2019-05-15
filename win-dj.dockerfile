@@ -1,5 +1,7 @@
 FROM mcr.microsoft.com/powershell:6.2.0-nanoserver-1803
 
+USER Administrator
+
 SHELL ["pwsh", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
 
 ENV PYTHON_VERSION 3.7.3
