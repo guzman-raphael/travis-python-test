@@ -33,7 +33,7 @@ services:
   mysql-client:
     build:
       context: .
-      dockerfile: win-mysql-cleint.dockerfile
+      dockerfile: win-mysql-client.dockerfile
     image: mysql_client:v1.0
     depends_on:
       - mysqlref
