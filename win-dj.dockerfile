@@ -7,7 +7,7 @@ SHELL ["pwsh", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference
 ENV PYTHON_VERSION 3.7.3
 ENV PYTHON_RELEASE 3.7.3
 
-WORKDIR C:/python
+# WORKDIR C:/python
 # RUN setx path "%path%;C:\python"
 RUN $url = ('https://www.python.org/ftp/python/{0}/python-{1}-amd64.exe' -f $env:PYTHON_RELEASE, $env:PYTHON_VERSION); \
 	Write-Host ('Downloading {0} ...' -f $url); \

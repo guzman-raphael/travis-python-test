@@ -50,6 +50,7 @@ services:
       - mysqlref
     networks:
       - main
+    user: Administrator
 
 networks:
   main:
