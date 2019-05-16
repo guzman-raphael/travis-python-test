@@ -63,7 +63,7 @@ RUN setx /M PATH %PATH%;c:\Python\;c:\Python\scripts\;
 USER ContainerUser
 
 ENTRYPOINT ["pwsh.exe" , "-NoLogo", "-NoProfile", "-Command"]
-CMD ["python --version"]
+CMD ["pip install datajoint"]
 
 
 # FROM mcr.microsoft.com/powershell:6.2.0-nanoserver-1803
