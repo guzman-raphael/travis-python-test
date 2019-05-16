@@ -60,6 +60,9 @@ COPY --from=base ["Python", "Python"]
 
 USER ContainerAdministrator
 RUN setx /M PATH %PATH%;c:\Python\;c:\Python\scripts\;
+RUN setx /M DJ_HOST mysqlref
+RUN setx /M DJ_USER root
+RUN setx /M DJ_PASS simple
 USER ContainerUser
 
 RUN pip install datajoint
