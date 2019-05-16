@@ -46,7 +46,7 @@ services:
       dockerfile: win-dj.dockerfile
     image: dj:v1.0
     depends_on:
-      - minio-mc
+      # - minio-mc
       - mysqlref
     networks:
       - main
