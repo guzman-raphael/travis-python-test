@@ -94,14 +94,14 @@ install:
   # - docker run --network="nat" minio_mc:v1.0
   # - docker ps
   - docker ps
-  - docker-compose up --build --exit-code-from datajoint
+  # - docker-compose up --build --exit-code-from datajoint
   # - docker pull minherz/minio-server:nanoserver
   # - docker pull vitaliylebedev/nano-minio:latest
   # - docker tag vitaliylebedev/nano-minio:latest minio:v1.0
   # - docker run --name=minio -p 9000:9000 -e "MINIO_ACCESS_KEY=datajoint" -e "MINIO_SECRET_KEY=datajoint" vitaliylebedev/nano-minio:latest C:\tools\minio.exe server C:\Data
   # - docker run -d -p 9000:9000 -e "MINIO_ACCESS_KEY=datajoint" -e "MINIO_SECRET_KEY=datajoint" /s /c minherz/minio-server:nanoserver C:\tools\minio.exe server C:\Data
   # - docker ps
-  - python -m pip install --upgrade pip # all three OSes agree about 'pip3'
+  # - python -m pip install --upgrade pip # all three OSes agree about 'pip3'
   # - python -m pip install --upgrade pandas numpy networkx backcall matplotlib datajoint
 # 'python' points to Python 2.7 on macOS but points to Python 3.7 on Linux and Windows
 # 'python3' is a 'command not found' error on Windows but 'py' works on Windows only
@@ -112,7 +112,8 @@ install:
 #   - docker run -d alpine sleep 10 
 #   - docker ps
 script: 
-  - python run.py
+  # - python run.py
+  - docker-compose up --build --exit-code-from datajoint
 after_success:
   - whoami
   # - python3 --version || python --version

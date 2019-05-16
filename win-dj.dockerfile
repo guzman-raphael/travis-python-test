@@ -62,8 +62,12 @@ USER ContainerAdministrator
 RUN setx /M PATH %PATH%;c:\Python\;c:\Python\scripts\;
 USER ContainerUser
 
+RUN pip install datajoint
+
+COPY run.py run.py
+
 ENTRYPOINT ["pwsh.exe" , "-NoLogo", "-NoProfile", "-Command"]
-CMD ["pip install datajoint"]
+CMD ["python run.py"]
 
 
 # FROM mcr.microsoft.com/powershell:6.2.0-nanoserver-1803
