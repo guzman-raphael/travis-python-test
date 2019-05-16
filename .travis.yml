@@ -113,7 +113,7 @@ install:
 #   - docker ps
 script: 
   # - python run.py
-  - docker-compose up --build --exit-code-from datajoint
+  - travis_wait 20 docker-compose up --build --exit-code-from datajoint
 after_success:
   - whoami
   # - python3 --version || python --version
