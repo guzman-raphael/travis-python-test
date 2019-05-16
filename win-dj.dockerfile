@@ -60,7 +60,7 @@ COPY --from=base ["Python", "Python"]
 
 SHELL ["pwsh", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
 
-RUN Invoke-WebRequest 'https://github.com/git-for-windows/git/releases/download/v2.21.0.windows.1/MinGit-2.21.0-64-bit.zip' -OutFile MinGit.zip
+ADD https://github.com/git-for-windows/git/releases/download/v2.21.0.windows.1/MinGit-2.21.0-64-bit.zip MinGit.zip
 
 RUN Expand-Archive c:\MinGit.zip -DestinationPath c:\MinGit; \
 $env:PATH = $env:PATH + ';C:\MinGit\cmd\;C:\MinGit\cmd'; \
