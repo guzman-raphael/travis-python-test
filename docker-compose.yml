@@ -49,7 +49,7 @@ services:
       # - minio-mc
       - mysqlref
     environment:
-      - DJ_HOST=db
+      - DJ_HOST=mysqlref
       - DJ_USER=root
       - DJ_PASS=simple
     networks:
