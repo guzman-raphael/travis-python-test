@@ -53,7 +53,8 @@ RUN Write-Host ('Installing pip=={0} ...' -f $env:PYTHON_PIP_VERSION); \
 	\
 	Write-Host 'Complete.';
 
-FROM microsoft/nanoserver:1803
+# FROM microsoft/nanoserver:1803
+FROM mcr.microsoft.com/powershell:6.2.0-nanoserver-1803
 
 COPY --from=base ["Python", "Python"]
 
@@ -61,8 +62,8 @@ USER ContainerAdministrator
 RUN setx /M PATH %PATH%;c:\Python\;c:\Python\scripts\;
 USER ContainerUser
 
-CMD ["python"]
-
+ENTRYPOINT ["pwsh.exe" , "-NoLogo", "-NoProfile", "-Command"]
+CMD ["python --version"]
 
 
 # FROM mcr.microsoft.com/powershell:6.2.0-nanoserver-1803
