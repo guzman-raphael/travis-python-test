@@ -41,7 +41,7 @@ RUN \
 	Write-Host '  python --version'; C:\base\python.exe --version; \
 	\
 	Write-Host 'Removing ...'; \
-	Remove-Item python.exe -Force; \
+	# Remove-Item python.exe -Force; \
 	\
 	Write-Host 'Complete.';
 
