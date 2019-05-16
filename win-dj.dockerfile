@@ -51,7 +51,7 @@ ENV PYTHON_PIP_VERSION 19.1.1
 RUN Write-Host ('Installing pip=={0} ...' -f $env:PYTHON_PIP_VERSION); \
 	[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; \
 	Invoke-WebRequest -Uri 'https://bootstrap.pypa.io/get-pip.py' -OutFile 'get-pip.py'; \
-	python get-pip.py \
+	C:\base\python.exe get-pip.py \
 		--disable-pip-version-check \
 		--no-cache-dir \
 		('pip=={0}' -f $env:PYTHON_PIP_VERSION) \
@@ -59,7 +59,7 @@ RUN Write-Host ('Installing pip=={0} ...' -f $env:PYTHON_PIP_VERSION); \
 	Remove-Item get-pip.py -Force; \
 	\
 	Write-Host 'Verifying pip install ...'; \
-	pip --version; \
+	C:\base\pip.exe --version; \
 	\
 	Write-Host 'Complete.';
 
