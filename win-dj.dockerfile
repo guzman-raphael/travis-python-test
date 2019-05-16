@@ -58,6 +58,12 @@ FROM mcr.microsoft.com/powershell:6.2.0-nanoserver-1803
 
 COPY --from=base ["Python", "Python"]
 
+RUN Invoke-WebRequest 'https://github.com/git-for-windows/git/releases/download/v2.21.0.windows.1/MinGit-2.21.0-64-bit.zip' -OutFile MinGit.zip
+
+RUN Expand-Archive c:\MinGit.zip -DestinationPath c:\MinGit; \
+$env:PATH = $env:PATH + ';C:\MinGit\cmd\;C:\MinGit\cmd'; \
+Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment\' -Name Path -Value $env:PATH'
+
 USER ContainerAdministrator
 RUN setx /M PATH %PATH%;c:\Python\;c:\Python\scripts\;
 # RUN setx /M DJ_HOST mysqlref
