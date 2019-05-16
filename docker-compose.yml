@@ -1,14 +1,14 @@
 version: '3.4'
 services:
-  minio:
-    build:
-      context: .
-      dockerfile: win-minio.dockerfile
-    image: minio:v1.0
-    # ports:
-    #   - "9000:9000"
-    networks:
-      - main
+  # minio:
+  #   build:
+  #     context: .
+  #     dockerfile: win-minio.dockerfile
+  #   image: minio:v1.0
+  #   # ports:
+  #   #   - "9000:9000"
+  #   networks:
+  #     - main
 
   mysqlref:
     build:
@@ -20,15 +20,15 @@ services:
     networks:
       - main
 
-  minio-mc:
-    build:
-      context: .
-      dockerfile: win-minio-mc.dockerfile
-    image: minio_mc:v1.0
-    depends_on:
-      - minio
-    networks:
-      - main
+  # minio-mc:
+  #   build:
+  #     context: .
+  #     dockerfile: win-minio-mc.dockerfile
+  #   image: minio_mc:v1.0
+  #   depends_on:
+  #     - minio
+  #   networks:
+  #     - main
 
   # mysql-client:
   #   build:
@@ -46,7 +46,7 @@ services:
       dockerfile: win-dj.dockerfile
     image: dj:v1.0
     depends_on:
-      - minio-mc
+      # - minio-mc
       - mysqlref
     networks:
       - main
