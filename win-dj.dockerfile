@@ -53,7 +53,7 @@ RUN Write-Host ('Installing pip=={0} ...' -f $env:PYTHON_PIP_VERSION); \
 	\
 	Write-Host 'Complete.';
 
-FROM microsoft/nanoserver:1709
+FROM microsoft/nanoserver:1803
 
 COPY --from=base ["Python", "Python"]
 
