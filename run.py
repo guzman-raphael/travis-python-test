@@ -21,6 +21,6 @@ class Test(dj.Manual):
 
 Test().insert([{'id' : 5, 'id2' : 7}])
 
-res = Test().fetch1()
+res = Test().fetch()
 
 print(res)

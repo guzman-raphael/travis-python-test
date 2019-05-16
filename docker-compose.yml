@@ -48,8 +48,13 @@ services:
     depends_on:
       # - minio-mc
       - mysqlref
+    environment:
+      - DJ_HOST=db
+      - DJ_USER=root
+      - DJ_PASS=simple
     networks:
       - main
+    command: python run.py
     # user: Administrator
 
 networks:

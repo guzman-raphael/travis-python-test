@@ -60,9 +60,9 @@ COPY --from=base ["Python", "Python"]
 
 USER ContainerAdministrator
 RUN setx /M PATH %PATH%;c:\Python\;c:\Python\scripts\;
-RUN setx /M DJ_HOST mysqlref
-RUN setx /M DJ_USER root
-RUN setx /M DJ_PASS simple
+# RUN setx /M DJ_HOST mysqlref
+# RUN setx /M DJ_USER root
+# RUN setx /M DJ_PASS simple
 USER ContainerUser
 
 RUN pip install datajoint
@@ -70,7 +70,7 @@ RUN pip install datajoint
 COPY run.py run.py
 
 ENTRYPOINT ["pwsh.exe" , "-NoLogo", "-NoProfile", "-Command"]
-CMD ["python run.py"]
+CMD ["python --help"]
 
 
 # FROM mcr.microsoft.com/powershell:6.2.0-nanoserver-1803
