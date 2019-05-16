@@ -55,5 +55,5 @@ RUN setx path "%path%;C:\minio-mc"
 
 ENTRYPOINT ["pwsh.exe" , "-NoLogo", "-NoProfile", "-Command"]
 # CMD ["mc config host add dj-s3 http://minio:9000 datajoint datajoint"]
-CMD ["mc config host add dj-s3 http://minio:9000 datajoint datajoint;mc mb dj-s3/datajoint-test;mc policy download dj-s3/datajoint-test;ping -t localhost"]
-# CMD ["mc config host add dj-s3 http://minio:9000 datajoint datajoint;mc mb dj-s3/datajoint-test;mc policy download dj-s3/datajoint-test;while ($true) { start-sleep -seconds 60}"]
+# CMD ["mc config host add dj-s3 http://minio:9000 datajoint datajoint;mc mb dj-s3/datajoint-test;mc policy download dj-s3/datajoint-test;ping -t localhost"]
+CMD ["mc config host add dj-s3 http://minio:9000 datajoint datajoint;mc mb dj-s3/datajoint-test;mc policy download dj-s3/datajoint-test;while ($true) { start-sleep -seconds 60}"]
