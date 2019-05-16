@@ -58,6 +58,8 @@ FROM mcr.microsoft.com/powershell:6.2.0-nanoserver-1803
 
 COPY --from=base ["Python", "Python"]
 
+SHELL ["pwsh", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
+
 RUN Invoke-WebRequest 'https://github.com/git-for-windows/git/releases/download/v2.21.0.windows.1/MinGit-2.21.0-64-bit.zip' -OutFile MinGit.zip
 
 RUN Expand-Archive c:\MinGit.zip -DestinationPath c:\MinGit; \
@@ -71,12 +73,22 @@ RUN setx /M PATH %PATH%;c:\Python\;c:\Python\scripts\;
 # RUN setx /M DJ_PASS simple
 USER ContainerUser
 
-RUN pip install datajoint
+# RUN pip install datajoint
+RUN pip install nose
+
+RUN \
+	New-Item -Path 'c:\"' -Name 'src' -ItemType 'directory'; \
+	Set-Location -Path C:\src; \
+	git clone https://github.com/datajoint/datajoint-python.git; \
+	Set-Location -Path C:\src\datajoint-python; \
+	pip install .
+
 
 COPY run.py run.py
 
 ENTRYPOINT ["pwsh.exe" , "-NoLogo", "-NoProfile", "-Command"]
-CMD ["python --help"]
+# CMD ["python --help"]
+CMD ["Set-Location -Path C:\src\datajoint-python\tests;nosetests -v --nocapture"]
 
 
 # FROM mcr.microsoft.com/powershell:6.2.0-nanoserver-1803
