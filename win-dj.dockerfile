@@ -64,7 +64,7 @@ ADD https://github.com/git-for-windows/git/releases/download/v2.21.0.windows.1/M
 
 RUN Expand-Archive c:\MinGit.zip -DestinationPath c:\MinGit; \
 $env:PATH = $env:PATH + ';C:\MinGit\cmd\;C:\MinGit\cmd'; \
-Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment\' -Name Path -Value $env:PATH'
+Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment\' -Name Path -Value $env:PATH
 
 USER ContainerAdministrator
 RUN setx /M PATH %PATH%;c:\Python\;c:\Python\scripts\;
