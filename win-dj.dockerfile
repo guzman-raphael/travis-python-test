@@ -60,13 +60,28 @@ COPY --from=base ["Python", "Python"]
 
 SHELL ["pwsh", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
 
-ADD https://github.com/git-for-windows/git/releases/download/v2.21.0.windows.1/MinGit-2.21.0-64-bit.zip MinGit.zip
+
+ENV MINGIT_VERSION 2.21.0
+ADD https://raw.githubusercontent.com/computeronix/docker-mingit/master/get_dep_ver.ps1 get_dep_ver.ps1
+
+RUN .\get_dep_ver.ps1; \
+    Invoke-WebRequest $('https://github.com/git-for-windows/git/releases/download/v{0}.windows.1/MinGit-{0}-64-bit.zip' -f $env:MINGIT_VERSION) -OutFile 'mingit.zip' -UseBasicParsing ; \
+    \
+    Expand-Archive mingit.zip -DestinationPath C:\mingit ; \
+    $env:PATH = 'C:\mingit\cmd;{0}' -f $env:PATH ; \
+    Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment\' -Name Path -Value $env:PATH ; \
+    Remove-Item -Path mingit.zip; \
+    Remove-Item get_dep_ver.ps1; \
+    Write-Host git version; git version;
+
+
+# ADD https://github.com/git-for-windows/git/releases/download/v2.21.0.windows.1/MinGit-2.21.0-64-bit.zip MinGit.zip
+
+# RUN Expand-Archive c:\MinGit.zip -DestinationPath c:\MinGit; \
+# $env:PATH = $env:PATH + ';C:\MinGit\cmd\;C:\MinGit\cmd'; \
+# Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment' -Name Path -Value $env:PATH
+
 USER ContainerAdministrator
-RUN Expand-Archive c:\MinGit.zip -DestinationPath c:\MinGit; \
-$env:PATH = $env:PATH + ';C:\MinGit\cmd\;C:\MinGit\cmd'; \
-Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment' -Name Path -Value $env:PATH
-
-
 RUN setx /M PATH %PATH%;c:\Python\;c:\Python\scripts\;
 # RUN setx /M DJ_HOST mysqlref
 # RUN setx /M DJ_USER root
