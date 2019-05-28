@@ -61,11 +61,11 @@ COPY --from=base ["Python", "Python"]
 SHELL ["pwsh", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
 
 
-ENV MINGIT_VERSION 2.21.0
+# ENV MINGIT_VERSION 2.21.0
 ADD https://raw.githubusercontent.com/computeronix/docker-mingit/master/get_dep_ver.ps1 get_dep_ver.ps1
 
 RUN .\get_dep_ver.ps1; \
-    Invoke-WebRequest $('https://github.com/git-for-windows/git/releases/download/v{0}.windows.1/MinGit-{0}-64-bit.zip' -f $env:MINGIT_VERSION) -OutFile 'mingit.zip' -UseBasicParsing ; \
+    Invoke-WebRequest $('https://github.com/git-for-windows/git/releases/download/v{0}.windows.1/MinGit-{0}-64-bit.zip' -f $MINGIT_VERSION) -OutFile 'mingit.zip' -UseBasicParsing ; \
     \
     Expand-Archive mingit.zip -DestinationPath C:\mingit ; \
     $env:PATH = 'C:\mingit\cmd;{0}' -f $env:PATH ; \
