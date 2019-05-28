@@ -71,6 +71,12 @@ matrix:
         # - choco install docker-compose
       env: 
         - PATH=/c/Python34:/c/Python34/Scripts:$PATH
+        - SECRET_VAR1=SECRET1
+
+matrix:
+  allow_failures:
+    - env: SECRET_VAR1=SECRET1
+
 sudo: required
 services: 
   - docker
