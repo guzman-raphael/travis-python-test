@@ -32,7 +32,7 @@ language: python            # this works for Linux but is an error on macOS or W
 env:
   - TEST="Nothing" TEST2="Nothing2"
 matrix:
-  allow_failures:
+  include:
     # - name: "Python 3.4 on macOS"
     #   os: osx
     #   osx_image: xcode9.3  # Python 3.7.2 running on macOS 10.14.3 xcode10.2, xcode9.4, 
