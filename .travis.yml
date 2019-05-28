@@ -15,8 +15,8 @@ matrix:
     # - docker build -t raphaelguzman/minio:2019-05-14-Nano1803 -f win-minio.dockerfile .
     # - docker push raphaelguzman/minio:2019-05-14-Nano1803
 
-    - docker build -t raphaelguzman/minio-mc:2019-05-01-Nano1803 -f win-minio-mc.dockerfile .
-    - docker push raphaelguzman/minio-mc:2019-05-01-Nano1803
+    # - docker build -t raphaelguzman/minio-mc:2019-05-01-Nano1803 -f win-minio-mc.dockerfile .
+    # - docker push raphaelguzman/minio-mc:2019-05-01-Nano1803
 
-    # - docker build -t raphaelguzman/datajoint:local-py3.6-nano1803 -f win-dj.dockerfile .
-    # - docker push raphaelguzman/minio-mc:local-py3.6-nano1803
+    - docker build -t raphaelguzman/datajoint:local-py3.6-nano1803 -f win-dj.dockerfile .
+    - docker push raphaelguzman/minio-mc:local-py3.6-nano1803
