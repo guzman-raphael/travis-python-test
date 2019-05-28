@@ -68,7 +68,7 @@ matrix:
         # - dockerd --experimental
         # - docker network ls
         # - choco install python --version 3.4.4 # this install takes at least 1 min 30 sec 3.7.2, 3.6.7, 3.5.1, 3.4.4
-        - choco install docker-compose
+        # - choco install docker-compose
       env: 
         - PATH=/c/Python34:/c/Python34/Scripts:$PATH
 sudo: required
