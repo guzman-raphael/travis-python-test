@@ -94,6 +94,11 @@ install:
   # - docker run --network="nat" minio_mc:v1.0
   # - docker ps
   - docker ps
+  - docker ps
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker build -t raphaelguzman/mysql:5.7-nano1803 -f win-mysql.dockerfile .
+  - docker images
+  - docker push raphaelguzman/mysql:5.7-nano1803
   # - docker-compose up --build --exit-code-from datajoint
   # - docker pull minherz/minio-server:nanoserver
   # - docker pull vitaliylebedev/nano-minio:latest
@@ -114,10 +119,8 @@ install:
 script: 
   # - python run.py
   # - docker-compose build
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker build -t raphaelguzman/mysql:5.7-nano1803 -f win-mysql.dockerfile .
-  - docker push raphaelguzman/mysql:5.7-nano1803
   # - docker-compose up --build --exit-code-from datajoint
+  - whoami
 after_success:
   - whoami
   # - python3 --version || python --version
