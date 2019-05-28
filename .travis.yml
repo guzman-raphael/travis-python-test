@@ -3,11 +3,9 @@ services:
 - docker
 matrix:
   include:
-  - name: "MySQL 5.7 / Python 3.7"
+  - name: "Push WIN Docker Image"
     os: windows
     language: shell
-    env:
-    - MYSQL_TAG=8.0-slim9.9
     script:
-    # - echo $MYSQL_TAG
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+    - docker build -t raphaelguzman/mysql:5.7-nano1803 -f win-mysql.dockerfile .
