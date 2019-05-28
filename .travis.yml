@@ -8,4 +8,6 @@ matrix:
     language: shell
     script:
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+    
     - docker build -t raphaelguzman/mysql:5.7-nano1803 -f win-mysql.dockerfile .
+    - docker push raphaelguzman/mysql:5.7-nano1803
