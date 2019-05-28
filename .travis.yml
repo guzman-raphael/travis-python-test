@@ -32,6 +32,7 @@ language: python            # this works for Linux but is an error on macOS or W
 env:
   - TEST="Nothing" TEST2="Nothing2"
 matrix:
+  allow_failures:
   include:
     # - name: "Python 3.4 on macOS"
     #   os: osx
@@ -71,11 +72,6 @@ matrix:
         # - choco install docker-compose
       env: 
         - PATH=/c/Python34:/c/Python34/Scripts:$PATH
-        - SECRET_VAR1=SECRET1
-
-matrix:
-  allow_failures:
-    - env: SECRET_VAR1=SECRET1
 
 sudo: required
 services: 
