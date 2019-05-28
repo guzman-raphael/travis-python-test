@@ -29,8 +29,8 @@ language: python            # this works for Linux but is an error on macOS or W
 # - 3.5
 # - 3.6
 # - 3.7
-env:
-  - TEST="Nothing" TEST2="Nothing2"
+# env:
+#   - TEST="Nothing" TEST2="Nothing2"
 matrix:
   include:
     # - name: "Python 3.4 on macOS"
