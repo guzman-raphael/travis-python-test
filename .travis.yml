@@ -101,9 +101,9 @@ install:
   - docker ps
   - docker images
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker build -t raphaelguzman/mysql:5.7-nano1803 -f win-mysql.dockerfile .
+  # - docker build -t raphaelguzman/mysql:5.7-nano1803 -f win-mysql.dockerfile .
   - docker images
-  - docker push raphaelguzman/mysql:5.7-nano1803
+  # - docker push raphaelguzman/mysql:5.7-nano1803
   # - docker-compose up --build --exit-code-from datajoint
   # - docker pull minherz/minio-server:nanoserver
   # - docker pull vitaliylebedev/nano-minio:latest
