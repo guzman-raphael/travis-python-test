@@ -9,4 +9,5 @@ matrix:
     env:
     - MYSQL_TAG=8.0-slim9.9
     script:
-    - echo $MYSQL_TAG
+    # - echo $MYSQL_TAG
+    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
