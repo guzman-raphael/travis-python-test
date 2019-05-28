@@ -89,21 +89,22 @@ RUN setx /M PATH %PATH%;c:\Python\;c:\Python\scripts\;
 USER ContainerUser
 
 # RUN pip install datajoint
-RUN pip install nose
+#RUN pip install nose
 
 RUN \
-	New-Item -Path 'c:\"' -Name 'src' -ItemType 'directory'; \
-	Set-Location -Path C:\src; \
-	git clone https://github.com/datajoint/datajoint-python.git; \
-	Set-Location -Path C:\src\datajoint-python; \
-	pip install .
+	New-Item -Path 'c:\"' -Name 'src' -ItemType 'directory'
+	#; \
+	#Set-Location -Path C:\src; \
+	#git clone https://github.com/datajoint/datajoint-python.git; \
+	#Set-Location -Path C:\src\datajoint-python; \
+	#pip install .
 
 
-COPY run.py run.py
+#COPY run.py run.py
 
 ENTRYPOINT ["pwsh.exe" , "-NoLogo", "-NoProfile", "-Command"]
 # CMD ["python --help"]
-CMD ["Set-Location -Path C:\src\datajoint-python\tests;nosetests -v --nocapture"]
+#CMD ["Set-Location -Path C:\src\datajoint-python\tests;nosetests -v --nocapture"]
 
 
 # FROM mcr.microsoft.com/powershell:6.2.0-nanoserver-1803
