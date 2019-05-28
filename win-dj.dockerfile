@@ -81,12 +81,12 @@ ADD https://raw.githubusercontent.com/computeronix/docker-mingit/master/get_dep_
 # $env:PATH = $env:PATH + ';C:\MinGit\cmd\;C:\MinGit\cmd'; \
 # Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Environment' -Name Path -Value $env:PATH
 
-USER ContainerAdministrator
+# USER ContainerAdministrator
 RUN setx /M PATH %PATH%;c:\Python\;c:\Python\scripts\;
 # RUN setx /M DJ_HOST mysqlref
 # RUN setx /M DJ_USER root
 # RUN setx /M DJ_PASS simple
-USER ContainerUser
+# USER ContainerUser
 
 # RUN pip install datajoint
 #RUN pip install nose
