@@ -57,6 +57,8 @@ FROM microsoft/nanoserver:1803
 
 COPY --from=base ["Python", "Python"]
 
+WORKDIR C:/src
+
 USER ContainerAdministrator
 RUN setx /M PATH %PATH%;c:\Python\;c:\Python\scripts\;
 USER ContainerUser
