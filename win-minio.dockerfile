@@ -41,7 +41,7 @@ RUN pwsh -NoLogo -NoProfile -Command "Invoke-WebRequest -Uri https://dl.minio.io
 
 # RUN pwsh -NoLogo -NoProfile -Command 'whoami'
 # RUN pwsh -NoLogo -NoProfile -Command '$acl = Get-Acl "minio.exe";$perm = "administrator", "FullControl", "None", "None", "Allow";$rule = New-Object -TypeName System.Security.AccessControl.FileSystemAccessRule -ArgumentList $perm;$acl.SetAccessRule($rule);$acl | Set-Acl -Path "minio.exe"'
-
+ADD ./healthcheck.exe C:/minio/healthcheck.exe
 # VOLUME [ "C:/minio/data" ]
 EXPOSE 9000
 ENTRYPOINT [ "C:/minio/minio.exe" ]
