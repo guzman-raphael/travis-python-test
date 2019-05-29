@@ -61,6 +61,8 @@ USER ContainerAdministrator
 RUN setx /M PATH %PATH%;c:\Python\;c:\Python\scripts\;
 USER ContainerUser
 
+SHELL ["pwsh", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
+
 RUN New-Item -Path C:\src -ItemType directory
 
 CMD ["python"]
