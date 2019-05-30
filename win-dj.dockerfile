@@ -58,7 +58,8 @@ FROM mcr.microsoft.com/powershell:6.2.0-nanoserver-1803
 COPY --from=base ["Python", "Python"]
 
 # USER ContainerAdministrator
-RUN setx /M PATH %PATH%;c:\Python\;c:\Python\scripts\;
+# RUN setx /M PATH %PATH%;c:\Python\;c:\Python\scripts\;
+RUN setx PATH "%PATH%;c:\Python;c:\Python\scripts"
 # USER ContainerUser
 
 # SHELL ["pwsh", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
