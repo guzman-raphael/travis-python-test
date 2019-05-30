@@ -66,7 +66,8 @@ RUN setx PATH "%PATH%;c:\Python;c:\Python\scripts"
 
 # RUN mkdir C:\src
 # RUN New-Item -Path C:\src -ItemType directory
-# USER ContainerAdministrator
+RUN whoami
+USER ContainerAdministrator
 WORKDIR c:/src
 ENTRYPOINT ["pwsh.exe" , "-NoLogo", "-NoProfile", "-Command"]
 CMD ["python --version"]
