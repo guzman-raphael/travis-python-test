@@ -47,5 +47,5 @@ ENV HOME /home/dja
 
 RUN pip install --user datajoint
 
-#docker run --name TEST --network dj_main -du $(id -u) -e DISPLAY -v /etc/group:/etc/group:ro -v /etc/passwd:/etc/passwd:ro -v /etc/shadow:/etc/shadow:ro -v /etc/sudoers.d:/etc/sudoers.d:ro -v /tmp/.X11-unix:/tmp/.X11-unix:rw -v /github/raphael/jnb/py:/src dj:v1.0 tail -f /dev/null
-#docker run --name TEST2 --network dj_main -d -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix:rw -v /github/raphael/jnb/py:/src test:v2.0 tail -f /dev/null
+#docker run --name GOOD --network dj_main -du $(id -u) -e DISPLAY -v /etc/group:/etc/group:ro -v /etc/passwd:/etc/passwd:ro -v /etc/shadow:/etc/shadow:ro -v /etc/sudoers.d:/etc/sudoers.d:ro -v /tmp/.X11-unix:/tmp/.X11-unix:rw -v /github/raphael/jnb/py:/src dj:v1.0 tail -f /dev/null
+#docker run --name BEST --network dj_main -d -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix:rw -v /github/raphael/jnb/py:/src test:v2.0 tail -f /dev/null
