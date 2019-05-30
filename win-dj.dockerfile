@@ -59,7 +59,7 @@ COPY --from=base ["Python", "Python"]
 
 USER ContainerAdministrator
 RUN setx /M PATH %PATH%;c:\Python\;c:\Python\scripts\;
-USER ContainerUser
+# USER ContainerUser
 
 SHELL ["pwsh", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
 
