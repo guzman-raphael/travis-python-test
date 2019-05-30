@@ -57,15 +57,15 @@ FROM mcr.microsoft.com/powershell:6.2.0-nanoserver-1803
 
 COPY --from=base ["Python", "Python"]
 
-USER ContainerAdministrator
+# USER ContainerAdministrator
 RUN setx /M PATH %PATH%;c:\Python\;c:\Python\scripts\;
-USER ContainerUser
+# USER ContainerUser
 
-SHELL ["pwsh", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
+# SHELL ["pwsh", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
 
 RUN New-Item -Path C:\src -ItemType directory
-USER ContainerAdministrator
-ENTRYPOINT ["pwsh.exe" , "-NoLogo", "-NoProfile", "-Command"]
+# USER ContainerAdministrator
+# ENTRYPOINT ["pwsh.exe" , "-NoLogo", "-NoProfile", "-Command"]
 CMD ["python"]
 
 
