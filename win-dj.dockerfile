@@ -65,6 +65,7 @@ SHELL ["pwsh", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference
 
 RUN New-Item -Path C:\src -ItemType directory
 USER ContainerAdministrator
+ENTRYPOINT ["pwsh.exe" , "-NoLogo", "-NoProfile", "-Command"]
 CMD ["python"]
 
 
