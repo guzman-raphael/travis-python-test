@@ -22,5 +22,10 @@ USER rguzman
 
 RUN pip install --user datajoint
 
-#docker run -d --name TEST --user=$(id -u) --env="DISPLAY" --volume="/etc/group:/etc/group:ro" --volume="/etc/passwd:/etc/passwd:ro" --volume="/etc/shadow:/etc/shadow:ro" --volume="/etc/sudoers.d:/etc/sudoers.d:ro" --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" -v /github/raphael/jnb/py:/src issue:v6.0 tail -f /dev/null
-#docker run --name TEST --network dj_main -du $(id -u) -e DISPLAY -v /etc/group:/etc/group:ro -v /etc/passwd:/etc/passwd:ro -v /etc/shadow:/etc/shadow:ro -v /etc/sudoers.d:/etc/sudoers.d:ro -v /tmp/.X11-unix:/tmp/.X11-unix:rw -v /github/raphael/jnb/py:/src issue:v6.0 tail -f /dev/null
+USER root
+
+RUN chmod -R u+rwx,g+rwx,o+rwx /home/rguzman/.local
+
+USER rguzman
+
+#docker run --name TEST --network dj_main -du $(id -u) -e DISPLAY -v /etc/group:/etc/group:ro -v /etc/passwd:/etc/passwd:ro -v /etc/shadow:/etc/shadow:ro -v /etc/sudoers.d:/etc/sudoers.d:ro -v /tmp/.X11-unix:/tmp/.X11-unix:rw -v /github/raphael/jnb/py:/src dj:v1.0 tail -f /dev/null
