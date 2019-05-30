@@ -64,11 +64,11 @@ RUN setx PATH "%PATH%;c:\Python;c:\Python\scripts"
 
 # SHELL ["pwsh", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
 
-RUN mkdir C:\src
+# RUN mkdir C:\src
 # RUN New-Item -Path C:\src -ItemType directory
-USER ContainerAdministrator
+# USER ContainerAdministrator
 ENTRYPOINT ["pwsh.exe" , "-NoLogo", "-NoProfile", "-Command"]
-CMD ["python"]
+CMD ["python --version"]
 
 
 # FROM microsoft/windowsservercore:1803 as base

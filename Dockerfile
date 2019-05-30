@@ -16,8 +16,11 @@
 FROM python:3.7-alpine3.9
 
 RUN apk add musl-dev g++ pkgconfig gcc freetype-dev graphviz ghostscript-fonts python3-tkinter
-RUN addgroup -S djuser && adduser -S -G djuser djuser
+RUN addgroup -S rguzman && adduser -S -G rguzman rguzman
 
-USER djuser
+USER rguzman
 
 RUN pip install --user datajoint
+
+#docker run -d --name TEST --user=$(id -u) --env="DISPLAY" --volume="/etc/group:/etc/group:ro" --volume="/etc/passwd:/etc/passwd:ro" --volume="/etc/shadow:/etc/shadow:ro" --volume="/etc/sudoers.d:/etc/sudoers.d:ro" --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" -v /github/raphael/jnb/py:/src issue:v6.0 tail -f /dev/null
+#docker run --name TEST --network dj_main -du $(id -u) -e DISPLAY -v /etc/group:/etc/group:ro -v /etc/passwd:/etc/passwd:ro -v /etc/shadow:/etc/shadow:ro -v /etc/sudoers.d:/etc/sudoers.d:ro -v /tmp/.X11-unix:/tmp/.X11-unix:rw -v /github/raphael/jnb/py:/src issue:v6.0 tail -f /dev/null
