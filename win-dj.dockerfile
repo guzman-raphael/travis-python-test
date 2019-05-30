@@ -64,9 +64,10 @@ RUN setx PATH "%PATH%;c:\Python;c:\Python\scripts"
 
 # SHELL ["pwsh", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
 
-RUN New-Item -Path C:\src -ItemType directory
+RUN mkdir C:\src
+# RUN New-Item -Path C:\src -ItemType directory
 # USER ContainerAdministrator
-# ENTRYPOINT ["pwsh.exe" , "-NoLogo", "-NoProfile", "-Command"]
+ENTRYPOINT ["pwsh.exe" , "-NoLogo", "-NoProfile", "-Command"]
 CMD ["python"]
 
 
