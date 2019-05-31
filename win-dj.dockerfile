@@ -70,6 +70,7 @@ RUN setx PATH "%PATH%;c:\Python;c:\Python\scripts"
 # RUN echo %username%
 # USER ContainerAdministrator
 WORKDIR c:/src
+VOLUME C:/src
 ENTRYPOINT ["pwsh.exe" , "-NoLogo", "-NoProfile", "-Command"]
 CMD ["python --version"]
 
