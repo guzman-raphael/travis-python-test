@@ -69,10 +69,10 @@ RUN setx PATH "%PATH%;c:\Python;c:\Python\scripts"
 # SHELL ["cmd", "/C"]
 # RUN echo %username%
 # USER ContainerAdministrator
-WORKDIR c:/src
-VOLUME C:/src
-ENTRYPOINT ["pwsh.exe" , "-NoLogo", "-NoProfile", "-Command"]
-CMD ["python --version"]
+# WORKDIR c:/src
+# VOLUME C:/src
+# ENTRYPOINT ["pwsh.exe" , "-NoLogo", "-NoProfile", "-Command"]
+# CMD ["python --version"]
 
 
 # FROM microsoft/windowsservercore:1803 as base
