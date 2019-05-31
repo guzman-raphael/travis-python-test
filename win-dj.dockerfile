@@ -57,11 +57,11 @@ FROM mcr.microsoft.com/powershell:6.2.0-nanoserver-1803
 
 COPY --from=base ["Python", "Python"]
 
-# USER ContainerAdministrator
+USER ContainerAdministrator
 # RUN setx /M PATH %PATH%;c:\Python\;c:\Python\scripts\;
 RUN setx PATH "%PATH%;c:\Python;c:\Python\scripts"
 # USER ContainerUser
-
+# ENTRYPOINT ["pwsh", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
 # SHELL ["pwsh", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
 
 # RUN mkdir C:\src
